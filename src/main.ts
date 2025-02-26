@@ -59,7 +59,6 @@ class Shrdzm extends utils.Adapter {
         // this.subscribeStates('lights.*');
         // Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
         // this.subscribeStates('*');
-
     }
 
     /**
@@ -76,7 +75,7 @@ class Shrdzm extends utils.Adapter {
             // clearInterval(interval1);
 
             callback();
-        } catch (e) {
+        } catch {
             callback();
         }
     }
