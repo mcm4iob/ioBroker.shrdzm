@@ -1,110 +1,123 @@
 {
-    "common": {
-        "name": "shrdzm",
-        "version": "0.0.0",
-        "news": {
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
-            }
-        },
-        "titleLang": {
-            "en": "SHRDZM Smartmerter Interface",
-            "de": "SHRDZM Smartmerter Interface",
-            "ru": "SHRDZM Smartmerter Interface",
-            "pt": "SHRDZM Smartmerter Interface",
-            "nl": "SHRDZM Smartmerter Interface",
-            "fr": "SHRDZM Smartmerter Interface",
-            "it": "SHRDZM Smartmerter Interface",
-            "es": "SHRDZM Smartmerter Interface",
-            "pl": "SHRDZM Smartmerter Interface",
-            "uk": "SHRDZM Smartmerter Interface",
-            "zh-cn": "SHRDZM Smartmerter Interface"
-        },
-        "desc": {
-            "en": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "de": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "ru": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "pt": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "nl": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "fr": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "it": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "es": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "pl": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "uk": "Integrate the SHRDZM smartmater interface into ioBroker",
-            "zh-cn": "Integrate the SHRDZM smartmater interface into ioBroker"
-        },
-        "authors": [
-            "Martin M. <mcm57@gmx.at>"
-        ],
-        "keywords": [
-            "smartmeter shrdzm"
-        ],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "platform": "Javascript/Node.js",
-        "icon": "shrdzm.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/mcm1957/ioBroker.shrdzm/main/admin/shrdzm.png",
-        "readme": "https://github.com/mcm1957/ioBroker.shrdzm/blob/main/README.md",
-        "loglevel": "info",
-        "tier": 3,
-        "mode": "daemon",
-        "type": "energy",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "push",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=6.0.11"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": "7.0.23"
-            }
-        ]
+  "common": {
+    "name": "shrdzm",
+    "version": "0.0.1-alpha.0",
+    "news": {
+      "0.0.1-alpha.0": {
+        "en": "initial release",
+        "de": "erstausstrahlung",
+        "ru": "первоначальное освобождение",
+        "pt": "lançamento inicial",
+        "nl": "eerste release",
+        "fr": "libération initiale",
+        "it": "rilascio iniziale",
+        "es": "liberación inicial",
+        "pl": "początkowe zwolnienie",
+        "uk": "початковий реліз",
+        "zh-cn": "初步释放"
+      },
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "uk": "Початкова версія",
+        "zh-cn": "首次出版"
+      }
     },
-    "native": {
-        "option1": true,
-        "option2": "42"
+    "titleLang": {
+      "en": "SHRDZM Smartmerter Interface",
+      "de": "SHRDZM Smartmerter Interface",
+      "ru": "SHRDZM Smartmerter Interface",
+      "pt": "SHRDZM Smartmerter Interface",
+      "nl": "SHRDZM Smartmerter Interface",
+      "fr": "SHRDZM Smartmerter Interface",
+      "it": "SHRDZM Smartmerter Interface",
+      "es": "SHRDZM Smartmerter Interface",
+      "pl": "SHRDZM Smartmerter Interface",
+      "uk": "SHRDZM Smartmerter Interface",
+      "zh-cn": "SHRDZM Smartmerter Interface"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
+    "desc": {
+      "en": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "de": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "ru": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "pt": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "nl": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "fr": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "it": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "es": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "pl": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "uk": "Integrate the SHRDZM smartmater interface into ioBroker",
+      "zh-cn": "Integrate the SHRDZM smartmater interface into ioBroker"
+    },
+    "authors": [
+      "Martin M. <mcm57@gmx.at>"
+    ],
+    "keywords": [
+      "smartmeter shrdzm"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "shrdzm.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/mcm1957/ioBroker.shrdzm/main/admin/shrdzm.png",
+    "readme": "https://github.com/mcm1957/ioBroker.shrdzm/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "mode": "daemon",
+    "type": "energy",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": "7.0.23"
+      }
     ]
+  },
+  "native": {
+    "option1": true,
+    "option2": "42"
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "Device or service connected",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
 }
