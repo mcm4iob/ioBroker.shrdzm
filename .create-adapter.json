@@ -1,0 +1,48 @@
+{
+    "expert": "yes",
+    "cli": false,
+    "adapterName": "shrdzm",
+    "title": "SHRDZM Smartmerter Interface",
+    "description": "Integrate the SHRDZM smartmater interface into ioBroker",
+    "keywords": [
+        "smartmeter shrdzm"
+    ],
+    "features": [
+        "adapter"
+    ],
+    "adminFeatures": [],
+    "type": "energy",
+    "startMode": "daemon",
+    "connectionType": "local",
+    "dataSource": "push",
+    "connectionIndicator": "yes",
+    "adapterSettings": [
+        {
+            "key": "option1",
+            "defaultValue": true,
+            "inputType": "checkbox"
+        },
+        {
+            "key": "option2",
+            "defaultValue": "42",
+            "inputType": "text"
+        }
+    ],
+    "language": "TypeScript",
+    "nodeVersion": "20",
+    "adminUi": "json",
+    "releaseScript": "yes",
+    "indentation": "Space (4)",
+    "quotes": "single",
+    "tools": [
+        "ESLint"
+    ],
+    "authorName": "Martin M.",
+    "authorGithub": "mcm1957",
+    "authorEmail": "mcm57@gmx.at",
+    "gitRemoteProtocol": "HTTPS",
+    "license": "MIT License",
+    "dependabot": "yes",
+    "target": "github",
+    "creatorVersion": "2.6.5"
+}
