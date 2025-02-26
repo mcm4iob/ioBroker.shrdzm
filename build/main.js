@@ -60,7 +60,7 @@ class Shrdzm extends utils.Adapter {
   onUnload(callback) {
     try {
       callback();
-    } catch (e) {
+    } catch {
       callback();
     }
   }
