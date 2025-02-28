@@ -22,90 +22,326 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var utils = __toESM(require("@iobroker/adapter-core"));
+var import_node_dgram = __toESM(require("node:dgram"));
 class Shrdzm extends utils.Adapter {
+  udp4Srv = null;
+  udp4SrvRetry = 10;
   constructor(options = {}) {
     super({
       ...options,
       name: "shrdzm"
     });
     this.on("ready", this.onReady.bind(this));
-    this.on("stateChange", this.onStateChange.bind(this));
     this.on("unload", this.onUnload.bind(this));
   }
   /**
+   * onReady
+   *
    * Is called when databases are connected and adapter received configuration.
    */
   async onReady() {
+    this.log.silly(`onReady()`);
     await this.setState("info.connection", false, true);
-    this.log.info(`config option1: ${this.config.option1}`);
-    this.log.info(`config option2: ${this.config.option2}`);
-    await this.setObjectNotExistsAsync("testVariable", {
-      type: "state",
-      common: {
-        name: "testVariable",
-        type: "boolean",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    this.subscribeStates("testVariable");
+    if (!this.validateConfig()) {
+      this.disable;
+      return;
+    }
+    if (!this.initUdp4Srv()) {
+      this.disable;
+      return;
+    }
   }
   /**
+   * onUnload
+   *
    * Is called when adapter shuts down - callback has to be called under any circumstances!
    *
-   * @param callback
+   * @param callback standard ioBroker callback
    */
   onUnload(callback) {
     try {
+      this.udp4Srv && this.udp4Srv.close();
       callback();
     } catch {
       callback();
     }
   }
-  // If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
-  // You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
-  // /**
-  //  * Is called if a subscribed object changes
-  //  */
-  // private onObjectChange(id: string, obj: ioBroker.Object | null | undefined): void {
-  //     if (obj) {
-  //         // The object was changed
-  //         this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-  //     } else {
-  //         // The object was deleted
-  //         this.log.info(`object ${id} deleted`);
-  //     }
-  // }
   /**
-   * Is called if a subscribed state changes
+   * processUdp4Message
    *
-   * @param id
-   * @param state
+   * handles a message received via udp4Srv
+   *
+   * @param msg data pacakte received (should be json)
+   * @param rinfo remote infor record
    */
-  onStateChange(id, state) {
-    if (state) {
-      this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-    } else {
-      this.log.info(`state ${id} deleted`);
+  async processUdp4Message(msg, rinfo) {
+    this.log.silly(`processUdp4SrvMessage(${msg.toString()}, ${JSON.stringify(rinfo)})`);
+    let msgJson;
+    try {
+      msgJson = await JSON.parse(msg.toString());
+    } catch (e) {
+      this.log.warn(`invalid packet received - ${e.message}`);
+      this.log.warn(`${msg.toString()}`);
+      return;
+    }
+    if (!msgJson.id) {
+      this.log.warn("invalid packet received - id is missing");
+      this.log.warn(`${msg.toString()}`);
+      return;
+    }
+    const data = msgJson.data;
+    if (!data) {
+      this.log.warn("invalid packet received - data is missing");
+      this.log.warn(`${msg.toString()}`);
+      return;
+    }
+    if (!await this.validateDevice(msgJson.id)) {
+      this.log.debug(`ignoreing message from device ${msgJson.id} due to filter setting`);
+      return;
+    }
+    for (const obisCode in msgJson.data) {
+      if (!obisCode.match(/\d+\.\d+\.\d+/)) {
+        continue;
+      }
+      await this.validateObis(msgJson.id, obisCode);
     }
   }
-  // If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
-  // /**
-  //  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
-  //  * Using this method requires "common.messagebox" property to be set to true in io-package.json
-  //  */
-  // private onMessage(obj: ioBroker.Message): void {
-  //     if (typeof obj === 'object' && obj.message) {
-  //         if (obj.command === 'send') {
-  //             // e.g. send email or pushover or whatever
-  //             this.log.info('send command');
-  //             // Send response in callback if required
-  //             if (obj.callback) this.sendTo(obj.from, obj.command, 'Message received', obj.callback);
-  //         }
-  //     }
-  // }
+  /**
+   * validateConfig
+   *
+   * validates the user supplied configuration
+   */
+  validateConfig() {
+    this.log.silly(`validateConfig()`);
+    let ok = true;
+    if (!this.config.port || this.config.port < 1024 || this.config.port > 65536) {
+      this.log.error(`invalid udp port ${this.config.port} specified, must be between 1025 and 65535`);
+      ok = false;
+    }
+    return ok;
+  }
+  /**
+   * initDevice
+   *
+   * initializes the devoce database and creates states if required
+   *
+   * @param id shrzdm device id
+   */
+  async initDevice(id) {
+    this.log.silly(`initDevice( ${id} )`);
+    await this.extendObject(
+      `${id}`,
+      {
+        type: "device",
+        common: {
+          name: id
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+    await this.extendObject(
+      `${id}.info`,
+      {
+        type: "channel",
+        common: {
+          name: `lblInfo`
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+    await this.extendObject(
+      `${id}.info.online`,
+      {
+        type: "state",
+        common: {
+          name: `lblInfoOnline`,
+          type: "boolean",
+          role: "indicator.reachable",
+          read: true,
+          write: false
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+    await this.extendObject(
+      `${id}.info.timestamp`,
+      {
+        type: "state",
+        common: {
+          name: `lblInfoTimestamp`,
+          type: "number",
+          role: "date",
+          read: true,
+          write: false
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+    await this.extendObject(
+      `${id}.info.uptime`,
+      {
+        type: "state",
+        common: {
+          name: `lblInfoUptime`,
+          type: "string",
+          role: "value",
+          read: true,
+          write: false
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+    await this.extendObject(
+      `${id}.live`,
+      {
+        type: "channel",
+        common: {
+          name: `lblLive`
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+  }
+  /**
+   * initOnisState
+   *
+   * initializes OBIS related states
+   *
+   * @param id shrzdm device id
+   * @param obis OBIS code
+   */
+  async initObisState(id, obis) {
+    this.log.silly(`initObisState(${id}, ${obis})`);
+    const obisId = obis.replaceAll(".", "_");
+    await this.extendObject(
+      `${id}.live.${obisId}`,
+      {
+        type: "state",
+        common: {
+          name: `lblObis${obisId}`,
+          type: "number"
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+  }
+  /**
+   * validateObis
+   *
+   * validate obis code received
+   *
+   * @param id shrzdm device id
+   * @param obis OBIS code
+   */
+  obisIds = {};
+  async validateObis(id, obisCode) {
+    this.log.silly(`validateObis(${id}, ${obisCode})`);
+    if (this.obisIds[`${id}-${obisCode}`]) {
+      return;
+    }
+    await this.initObisState(id, obisCode);
+    this.obisIds[`${id}-${obisCode}`] = true;
+  }
+  /**
+   *
+   * validateDevice
+   *
+   * validates whether device should be processed
+   */
+  deviceIds = {};
+  async validateDevice(id) {
+    this.log.silly(`validateDevice(${id})`);
+    if (this.deviceIds[id] !== void 0) {
+      return this.deviceIds[id];
+    }
+    if (!id.match(/^[A-Z0-9]{12}$/)) {
+      this.log.warn(`message with invalid device id ${id} received, id will be ignored`);
+      this.deviceIds[id] = false;
+    }
+    if (this.config.devices && !this.config.devices.includes(id)) {
+      this.log.warn(`message from device with id ${id} received, id will be ignored`);
+      this.deviceIds[id] = false;
+    }
+    this.log.info(`device ${id} is active`);
+    await this.initDevice(id);
+    this.deviceIds[id] = true;
+    return true;
+  }
+  /**
+   * initUdp4Srv
+   *
+   * initializes the udp4Srv instance
+   */
+  initUdp4Srv() {
+    try {
+      this.udp4Srv = import_node_dgram.default.createSocket("udp4");
+      this.udp4Srv.on("error", this.onUdp4SrvError.bind(this));
+      this.udp4Srv.on("message", this.onUdp4SrvMessage.bind(this));
+      this.udp4Srv.on("listening", this.onUdp4SrvListening.bind(this));
+    } catch (e) {
+      console.log(`error initializing udp4Src - ${e.message}`);
+      return false;
+    }
+    try {
+      this.udp4Srv && this.udp4Srv.bind(this.config.port);
+    } catch (e) {
+      console.log(`error binding udp4Src to port ${this.config.port} - ${e.message}`);
+      return false;
+    }
+    return true;
+  }
+  /**
+   * onUdp4SrvError
+   *
+   * is called if any error occures at udp4Srv socket
+   *
+   * @param err standard error object
+   */
+  async onUdp4SrvError(err) {
+    this.log.silly(`onUdp4SrvError( err )`);
+    this.log.error(`error reported by udp4Srv:
+${err.stack}`);
+    this.udp4Srv && this.udp4Srv.close();
+    await this.setState("info.connection", false, true);
+    if (this.udp4SrvRetry--) {
+      this.log.info(`trying to restablish udp connection in 5s`);
+      this.setTimeout(this.initUdp4Srv, 5 * 1e3);
+    } else {
+      this.log.error(`maximum number of retries exceeded`);
+    }
+  }
+  /**
+   * onUdp4SrvMessage
+   *
+   * is called whenever a new message is received at udp4Srv socket
+   *
+   * @param msg shrdzm data block received
+   * @param rinfo remote information provided by dram service
+   */
+  async onUdp4SrvMessage(msg, rinfo) {
+    this.log.debug(`onUdp4SrvMessage(${msg.toString()}, ${rinfo.address}:${rinfo.port})`);
+    await this.processUdp4Message(msg, rinfo);
+  }
+  /**
+   * onUdpSrvListening
+   *
+   * is cllaed as soon as server starts listening
+   */
+  async onUdp4SrvListening() {
+    if (this.udp4Srv) {
+      const address = this.udp4Srv.address();
+      this.log.info(`server listening ${address.address}:${address.port}`);
+      this.udp4SrvRetry = 12 * 60;
+      await this.setState("info.connection", true, true);
+    }
+  }
 }
 if (require.main !== module) {
   module.exports = (options) => new Shrdzm(options);

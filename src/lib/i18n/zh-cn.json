@@ -1,0 +1,13 @@
+{
+    "lblEnergyProduced": "仪表读数（生产）",
+    "lblEnergyReceived": "仪表读数（消耗）",
+    "lblEnergyT1Produced": "仪表读数（生产）关税1（低）",
+    "lblEnergyT1Received": "仪表读数（消耗）关税1（低）",
+    "lblEnergyT2Produced": "仪表读数（生产）关税2（高）",
+    "lblEnergyT2Received": "仪表读数（消耗）关税2（高）",
+    "lblPeakPowerProduced": "最高四分之一小时（生产）",
+    "lblPeakPowerReceived": "最多四分之一小时（消耗）",
+    "lblPower": "力量（平衡）",
+    "lblPowerProduced": "力量（产生）",
+    "lblPowerReceived": "权力（消耗）"
+}

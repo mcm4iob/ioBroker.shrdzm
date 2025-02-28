@@ -106,8 +106,8 @@
     ]
   },
   "native": {
-    "option1": true,
-    "option2": "42"
+    "port": 0,
+    "devices": ""
   },
   "objects": [],
   "instanceObjects": [

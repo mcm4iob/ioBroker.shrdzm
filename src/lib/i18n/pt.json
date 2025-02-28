@@ -1,0 +1,13 @@
+{
+    "lblEnergyProduced": "Leitura do medidor (produzido)",
+    "lblEnergyReceived": "Leitura do medidor (consumido)",
+    "lblEnergyT1Produced": "Leitura do medidor (Produzido) Tarifa 1 (Low)",
+    "lblEnergyT1Received": "Leitura do medidor (Consumido) Tarifa 1 (Low)",
+    "lblEnergyT2Produced": "Tarifa de leitura do medidor (produzida) (alta)",
+    "lblEnergyT2Received": "Tarifa de leitura do medidor (consumida) (alta)",
+    "lblPeakPowerProduced": "Máximo de um quarto de hora (produzido)",
+    "lblPeakPowerReceived": "Máximo de um quarto de hora (consumido)",
+    "lblPower": "Poder (equilibrado)",
+    "lblPowerProduced": "Poder (produzido)",
+    "lblPowerReceived": "Poder (consumido)"
+}

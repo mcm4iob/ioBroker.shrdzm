@@ -1,0 +1,13 @@
+{
+    "lblEnergyProduced": "Zählerstand (Einspeisung)",
+    "lblEnergyReceived": "Zählerstand (Bezug)",
+    "lblEnergyT1Produced": "Zählerstand (Einspeisung) Tarif 1 (NT)",
+    "lblEnergyT1Received": "Zählerstand (Bezug) Tarif 1 (NT)",
+    "lblEnergyT2Produced": "Zählerstand (Einspeisung) Tarif 2 (HT)",
+    "lblEnergyT2Received": "Zählerstand (Bezug) Tarif 2 (HT)",
+    "lblPeakPowerProduced": "Viertelstundenmaximum (Einspeisung)",
+    "lblPeakPowerReceived": "Viertelstundenmaximum (Bezug)",
+    "lblPower": "Momentanleistung (saldiert)",
+    "lblPowerProduced": "Momentanleistung (Einspeisung)",
+    "lblPowerReceived": "Momentanleistung (Bezug)"
+}

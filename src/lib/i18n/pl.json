@@ -1,0 +1,13 @@
+{
+    "lblEnergyProduced": "odczyt licznika (wyprodukowany)",
+    "lblEnergyReceived": "odczyt licznika (zużyty)",
+    "lblEnergyT1Produced": "czytanie miernika (wyprodukowane) taryfa 1 (niska)",
+    "lblEnergyT1Received": "czytanie miernika (zużyta) taryfa 1 (niska)",
+    "lblEnergyT2Produced": "czytanie licznika (wyprodukowane) taryfa 2 (wysoka)",
+    "lblEnergyT2Received": "czytanie licznika (zużyta) taryfa 2 (wysoka)",
+    "lblPeakPowerProduced": "Maksymalne (wyprodukowane) ćwierćogodzinne (wyprodukowane)",
+    "lblPeakPowerReceived": "Maksymalnie ćwierć godzinny (zużyty)",
+    "lblPower": "Moc (zrównoważony)",
+    "lblPowerProduced": "Moc (wyprodukowana)",
+    "lblPowerReceived": "Moc (zużyty)"
+}

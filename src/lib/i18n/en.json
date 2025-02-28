@@ -1,0 +1,13 @@
+{
+    "lblEnergyProduced": "meter reading (produced)",
+    "lblEnergyReceived": "meter reading (consumed)",
+    "lblEnergyT1Produced": "meter reading (produced) tariff 1 (low)",
+    "lblEnergyT1Received": "meter reading (consumed) tariff 1 (low)",
+    "lblEnergyT2Produced": "meter reading (produced) tariff 2 (high)",
+    "lblEnergyT2Received": "meter reading (consumed) tariff 2 (high)",
+    "lblPeakPowerProduced": "quarter-hour maximum (produced)",
+    "lblPeakPowerReceived": "quarter-hour maximum (consumed)",
+    "lblPower": "Power (balanced)",
+    "lblPowerProduced": "Power (produced)",
+    "lblPowerReceived": "Power (consumed)"
+}
