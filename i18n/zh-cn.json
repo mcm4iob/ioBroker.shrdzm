@@ -1,0 +1,20 @@
+{
+    "lblPeakActivePowerConsumed": "峰值有效功率（消耗）",
+    "lblPeakActivePowerProduced": "峰值有效功率（产生）",
+    "lblActivePowerConsumed": "有效的力量（消耗）",
+    "lblActivePowerProduced": "有效的力量（产生）",
+    "lblReactivePowerConsumed": "反应力（消耗）",
+    "lblReactivePowerProduced": "反应力（产生",
+    "lblActiveEnergyConsumed": "总有效能量（消耗）",
+    "lblActiveEnergyT1Consumed": "总有效能源HT（消耗）",
+    "lblActiveEnergyT2Consumed": "总有效能量LT（消耗）",
+    "lblACtiveEnergyProduced": "总有效能量（产生）",
+    "lblActiveEnergyT1Produced": "总有效能量HT（生产）",
+    "lblActiveEnergyT2Produced": "总有效能量LT（生产）",
+    "lblReactiveEnergyConsumed": "总反应能（消耗）",
+    "lblReactiveEnergyProduced": "总反应能（产生）",
+    "lblPower": "当前有效的功率",
+    "lblInfo": "信息",
+    "lblInfoOnline": "在线设备",
+    "lblInfoTimestamp": "时间戳"
+}

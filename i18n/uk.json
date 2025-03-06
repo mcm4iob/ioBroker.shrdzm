@@ -1,0 +1,20 @@
+{
+    "lblPeakActivePowerConsumed": "Пік ефективної потужності (споживається)",
+    "lblPeakActivePowerProduced": "Пікова ефективна потужність (вироблена)",
+    "lblActivePowerConsumed": "Ефективна потужність (споживана)",
+    "lblActivePowerProduced": "Ефективна потужність (вироблена)",
+    "lblReactivePowerConsumed": "реактивна сила (споживана)",
+    "lblReactivePowerProduced": "реактивна потужність (вироблена",
+    "lblActiveEnergyConsumed": "Загальна ефективна енергія (споживана)",
+    "lblActiveEnergyT1Consumed": "Загальна ефективна енергія HT (споживається)",
+    "lblActiveEnergyT2Consumed": "Загальна ефективна енергетика LT (споживається)",
+    "lblACtiveEnergyProduced": "Загальна ефективна енергія (вироблена)",
+    "lblActiveEnergyT1Produced": "Загальна ефективна енергія HT (вироблена)",
+    "lblActiveEnergyT2Produced": "Загальна ефективна енергетика LT (вироблена)",
+    "lblReactiveEnergyConsumed": "Загальна реактивна енергія (споживана)",
+    "lblReactiveEnergyProduced": "Загальна реактивна енергія (вироблена)",
+    "lblPower": "Поточна ефективна потужність",
+    "lblInfo": "інформація",
+    "lblInfoOnline": "пристрій в Інтернеті",
+    "lblInfoTimestamp": "часова позначка"
+}

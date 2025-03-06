@@ -1,0 +1,20 @@
+{
+    "lblPeakActivePowerConsumed": "Piek effectief vermogen (verbruikt)",
+    "lblPeakActivePowerProduced": "Piek effectief vermogen (geproduceerd)",
+    "lblActivePowerConsumed": "Effectieve kracht (geconsumeerd)",
+    "lblActivePowerProduced": "effectief vermogen (geproduceerd)",
+    "lblReactivePowerConsumed": "reactieve kracht (geconsumeerd)",
+    "lblReactivePowerProduced": "reactieve kracht (geproduceerd",
+    "lblActiveEnergyConsumed": "Totale effectieve energie (verbruikt)",
+    "lblActiveEnergyT1Consumed": "Totale effectieve energie HT (verbruikt)",
+    "lblActiveEnergyT2Consumed": "Total Effective Energy LT (verbruikt)",
+    "lblACtiveEnergyProduced": "Totale effectieve energie (geproduceerd)",
+    "lblActiveEnergyT1Produced": "Totale effectieve energie HT (geproduceerd)",
+    "lblActiveEnergyT2Produced": "Total Effective Energy LT (geproduceerd)",
+    "lblReactiveEnergyConsumed": "Totale reactieve energie (verbruikt)",
+    "lblReactiveEnergyProduced": "Totale reactieve energie (geproduceerd)",
+    "lblPower": "Huidige effectieve kracht",
+    "lblInfo": "informatie",
+    "lblInfoOnline": "apparaat online",
+    "lblInfoTimestamp": "tijdstempel"
+}

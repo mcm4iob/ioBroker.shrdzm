@@ -1,0 +1,20 @@
+{
+    "lblPeakActivePowerConsumed": "Пиковая эффективная мощность (потребляется)",
+    "lblPeakActivePowerProduced": "Пиковая эффективная мощность (произведена)",
+    "lblActivePowerConsumed": "Эффективная власть (потребляется)",
+    "lblActivePowerProduced": "Эффективная сила (производится)",
+    "lblReactivePowerConsumed": "реактивная власть (потребляется)",
+    "lblReactivePowerProduced": "Реактивная сила (произведена",
+    "lblActiveEnergyConsumed": "Общая эффективная энергия (потребляется)",
+    "lblActiveEnergyT1Consumed": "Общая эффективная энергия HT (потребляется)",
+    "lblActiveEnergyT2Consumed": "Общая эффективная энергия LT (потребляется)",
+    "lblACtiveEnergyProduced": "Общая эффективная энергия (произведена)",
+    "lblActiveEnergyT1Produced": "Общая эффективная энергия HT (производится)",
+    "lblActiveEnergyT2Produced": "Общая эффективная энергия LT (производится)",
+    "lblReactiveEnergyConsumed": "Общая реактивная энергия (потребляется)",
+    "lblReactiveEnergyProduced": "Общая реактивная энергия (произведена)",
+    "lblPower": "Текущая эффективная мощность",
+    "lblInfo": "информация",
+    "lblInfoOnline": "устройство онлайн",
+    "lblInfoTimestamp": "временная метка"
+}

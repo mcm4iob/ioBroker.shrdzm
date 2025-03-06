@@ -1,0 +1,20 @@
+{
+    "lblPeakActivePowerConsumed": "Spitzenwert Wirkleistung (bezogen)",
+    "lblPeakActivePowerProduced": "Spitzenwert Wirkleistung (produziert)",
+    "lblActivePowerConsumed": "Wirkleistung (bezogen)",
+    "lblActivePowerProduced": "Wirkleistung (produziert)",
+    "lblReactivePowerConsumed": "Blindleistung (bezogen)",
+    "lblReactivePowerProduced": "Blindleistung (produziert",
+    "lblActiveEnergyConsumed": "Summe Wirkenergie (bezogen)",
+    "lblActiveEnergyT1Consumed": "Summe Wirkenergie HT (bezogen)",
+    "lblActiveEnergyT2Consumed": "Summe Wirkenergie LT (bezogen)",
+    "lblACtiveEnergyProduced": "Summe Wirkenergie (produziert)",
+    "lblActiveEnergyT1Produced": "Summe Wirkenergie HT (produziert)",
+    "lblActiveEnergyT2Produced": "Summe Wirkenergie LT (produziert)",
+    "lblReactiveEnergyConsumed": "Summe Blindenergie (bezogen)",
+    "lblReactiveEnergyProduced": "Summe Blindenergie (produziert)",
+    "lblPower": "Aktuelle Wirkleistung",
+    "lblInfo": "Information",
+    "lblInfoOnline": "Gerät online",
+    "lblInfoTimestamp": "Zeitstempel"
+}

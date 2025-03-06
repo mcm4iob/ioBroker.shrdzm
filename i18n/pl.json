@@ -1,0 +1,20 @@
+{
+    "lblPeakActivePowerConsumed": "Szczytowa efektywna moc (zużyta)",
+    "lblPeakActivePowerProduced": "Szczytowa moc efektywna (wyprodukowana)",
+    "lblActivePowerConsumed": "Skuteczna moc (zużyta)",
+    "lblActivePowerProduced": "Efektywna moc (wyprodukowana)",
+    "lblReactivePowerConsumed": "moc reaktywna (zużyta)",
+    "lblReactivePowerProduced": "moc reaktywna (wyprodukowana",
+    "lblActiveEnergyConsumed": "Całkowita efektywna energia (zużyta)",
+    "lblActiveEnergyT1Consumed": "Całkowita efektywna energia HT (zużyty)",
+    "lblActiveEnergyT2Consumed": "Całkowita efektywna energia LT (zużyty)",
+    "lblACtiveEnergyProduced": "Całkowita efektywna energia (wyprodukowana)",
+    "lblActiveEnergyT1Produced": "Całkowita efektywna energia HT (wyprodukowana)",
+    "lblActiveEnergyT2Produced": "Całkowita efektywna energia LT (wyprodukowana)",
+    "lblReactiveEnergyConsumed": "Całkowita energia reaktywna (zużyta)",
+    "lblReactiveEnergyProduced": "Całkowita energia reaktywna (wyprodukowana)",
+    "lblPower": "Obecna skuteczna moc",
+    "lblInfo": "informacja",
+    "lblInfoOnline": "urządzenie online",
+    "lblInfoTimestamp": "znacznik czasu"
+}

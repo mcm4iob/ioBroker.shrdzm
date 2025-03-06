@@ -3,8 +3,8 @@
  */
 
 import * as utils from '@iobroker/adapter-core';
-
 import dgram, { type RemoteInfo } from 'node:dgram';
+
 
 type ShrdzmMsg = {
     id: string;
@@ -18,72 +18,104 @@ type ShrdzmMsg = {
 type ShrzmDeviceId = string;
 type ObisCode = string;
 
-// const OBIS: {
-//     [key: ObisCode]: {
-//         desc: string;
-//     };
-// } = {
-//     '1.6.0': {
-//         // Viertelstundenmaximum (Bezug) in kW
-//         desc: 'lblPeakPowerReceived',
-//     },
-//     '1.7.0': {
-//         // Momentableistung (Bezug) in kW
-//         desc: 'lblPowerReceived',
-//     },
-//     '2.7.0': {
-//         // Momentableistung (Bezug) in kWh ??
-//         desc: 'lblPowerReceived',
-//     },
-//     '3.7.0': {
-//         // Momentableistung (Bezug) in kWh ??
-//         desc: 'lblPowerReceived',
-//     },
-//     '4.7.0': {
-//         // Momentableistung (Bezug) in kWh ??
-//         desc: 'lblPowerReceived',
-//     },
-//     '1.8.0': {
-//         // Zählerstand (Bezug) in kWh
-//         desc: 'lblEnergyReceived',
-//     },
-//     '1.8.1': {
-//         // Zählerstand (Bezug) T1 (NT) in kWh
-//         desc: 'lblEnergyT1Received',
-//     },
-//     '1.8.2': {
-//         // Zählerstand (Bezug) T2 (HT) in kWh
-//         desc: 'lblEnergyT2Received',
-//     },
-//     '2.6.0': {
-//         // Viertelstundenmaximum (Einspeisung) in kW
-//         desc: 'lblPeakPowerReceived',
-//     },
-//     '2.8.0': {
-//         // Zählerstand (Einspeisung) in kWh
-//         desc: 'lblPowerProduced',
-//     },
-//     '2.8.1': {
-//         // Zählerstand (Einspeisung) T1 (NT) in kWh
-//         desc: 'lblEnergyT1Produced',
-//     },
-//     '2.8.2': {
-//         // Zählerstand (Einspeisung) T2 (HT) in kWh
-//         desc: 'lblEnergyT2Produced',
-//     },
-//     '3.8.0': {
-//         // Blindleistung induktiv (Bezug) in kVarh
-//         desc: 'lblPowerXxxxReceived',
-//     },
-//     '4.8.0': {
-//         // Blindleistung kapazitiv (Bezug) in kVarh
-//         desc: 'lblPowerReceived',
-//     },
-//     '16.7.0': {
-//         // Momentleistung (saldiert) in kW
-//         desc: 'lblPower',
-//     },
-// };
+const OBIS: {
+    [key: ObisCode]: {
+        name: string;
+        role: string;
+        unit: string;
+    };
+} = {
+    '1.6.0': {
+        // Viertelstundenmaximum (Bezug) in kW
+        name: 'lblPeakActivePowerConsumed',
+        role: 'value.power.consumed',
+        unit: 'W',
+    },
+    '2.6.0': {
+        // Viertelstundenmaximum (Einspeisung) in kW
+        name: 'lblPeakActivePowerProduced',
+        role: 'value.power.produced',
+        unit: 'Wh',
+    },
+    '1.7.0': {
+        // Momentanleistung (Bezug) in kW
+        name: 'lblActivePowerConsumed',
+        role: 'value.power.consumed',
+        unit: 'W',
+    },
+    '2.7.0': {
+        // Momentanleistung (Einspeisung) in kW
+        name: 'lblActivePowerProduced',
+        role: 'value.power.produced',
+        unit: 'W',
+    },
+    '3.7.0': {
+        // Momentanblindleistung (Bezug) in kVar
+        name: 'lblReactivePowerConsumed',
+        role: 'value.power.reactive',
+        unit: 'Var',
+    },
+    '4.7.0': {
+        // Momentanblindleistung (Einspeisung) in kVar
+        name: 'lblReactivePowerProduced',
+        role: 'value.power.reactive',
+        unit: 'Var',
+    },
+    '1.8.0': {
+        // Summe Energie / Zählerstand (Bezug) in kWh
+        name: 'lblActiveEnergyConsumed',
+        role: 'value.energy.consumed',
+        unit: 'Wh',
+    },
+    '1.8.1': {
+        // Zählerstand (Bezug) T1 (NT) in kWh
+        name: 'lblActiveEnergyT1Consumed',
+        role: 'value.energy.consumed',
+        unit: 'Wh',
+    },
+    '1.8.2': {
+        // Zählerstand (Bezug) T2 (HT) in kWh
+        name: 'lblActiveEnergyT2Consumed',
+        role: 'value.energy.consumed',
+        unit: 'Wh',
+    },
+    '2.8.0': {
+        // Summe Energie Zählerstand (Einspeisung) in kWh
+        name: 'lblACtiveEnergyProduced',
+        role: 'value.energy.produced',
+        unit: 'Wh',
+    },
+    '2.8.1': {
+        // Zählerstand (Einspeisung) T1 (NT) in kWh
+        name: 'lblActiveEnergyT1Produced',
+        role: 'value.energy.produced',
+        unit: 'Wh',
+    },
+    '2.8.2': {
+        // Zählerstand (Einspeisung) T2 (HT) in kWh
+        name: 'lblActiveEnergyT2Produced',
+        role: 'value.energy.produced',
+        unit: 'Wh',
+    },
+    '3.8.0': {
+        // Summe Blindenergie (Bezug) in kVarh
+        name: 'lblReactiveEnergyConsumed',
+        role: 'value.energy.reactive',
+        unit: 'Var',
+    },
+    '4.8.0': {
+        // Summe Blindenergie (Einspeisung) in kVarh
+        name: 'lblReactiveEnergyProduced',
+        role: 'value.energy.reactive',
+        unit: 'Var',
+    },
+    '16.7.0': {
+        // Momentleistung (saldiert) in kW
+        name: 'lblPower',
+        role: 'value.power',
+        unit: 'W',
+    },
+};
 
 class Shrdzm extends utils.Adapter {
     private udp4Srv: dgram.Socket | null = null;
@@ -107,6 +139,8 @@ class Shrdzm extends utils.Adapter {
         this.log.silly(`onReady()`);
 
         await this.setState('info.connection', false, true);
+
+        await utils.I18n.init(`${__dirname}/..`, this);
 
         if (!this.validateConfig()) {
             this.disable;
@@ -184,8 +218,8 @@ class Shrdzm extends utils.Adapter {
 
             await this.validateObis(msgJson.id, obisCode);
 
-            //const value: number = Number(msgJson.data[obisCode]);
-            //await this.setObis(msgJson.id, obisCode, value);
+            const value = Number(msgJson.data[obisCode]);
+            await this.setObis(msgJson.id, obisCode, value);
         }
     }
 
@@ -234,7 +268,7 @@ class Shrdzm extends utils.Adapter {
             {
                 type: 'channel',
                 common: {
-                    name: `lblInfo`,
+                    name: utils.I18n.getTranslatedObject(`lblInfo`),
                 },
                 native: {},
             },
@@ -246,7 +280,7 @@ class Shrdzm extends utils.Adapter {
             {
                 type: 'state',
                 common: {
-                    name: `lblInfoOnline`,
+                    name: utils.I18n.getTranslatedObject(`lblInfoOnline`),
                     type: 'boolean',
                     role: 'indicator.reachable',
                     read: true,
@@ -262,7 +296,7 @@ class Shrdzm extends utils.Adapter {
             {
                 type: 'state',
                 common: {
-                    name: `lblInfoTimestamp`,
+                    name: utils.I18n.getTranslatedObject(`lblInfoTimestamp`),
                     type: 'number',
                     role: 'date',
                     read: true,
@@ -304,7 +338,7 @@ class Shrdzm extends utils.Adapter {
     }
 
     /**
-     * initOnisState
+     * initObisState
      *
      * initializes OBIS related states
      *
@@ -316,18 +350,37 @@ class Shrdzm extends utils.Adapter {
 
         const obisId = obis.replaceAll('.', '_');
 
-        await this.extendObject(
-            `${id}.live.${obisId}`,
-            {
-                type: 'state',
-                common: {
-                    name: `lblObis${obisId}`,
-                    type: 'number',
+        if (OBIS[obis]) {
+            await this.extendObject(
+                `${id}.live.${obisId}`,
+                {
+                    type: 'state',
+                    common: {
+                        name: utils.I18n.getTranslatedObject(OBIS[obis].name),
+                        type: 'number',
+                        role: OBIS[obis].role,
+                        unit: OBIS[obis].unit,
+                    },
+                    native: {},
                 },
-                native: {},
-            },
-            { preserve: { common: ['name'] } },
-        );
+                { preserve: { common: ['name'] } },
+            );
+        } else {
+            await this.extendObject(
+                `${id}.live.${obisId}`,
+                {
+                    type: 'state',
+                    common: {
+                        name: `OBIS-${obisId}`,
+                        type: 'number',
+                        role: 'value',
+                        unit: '',
+                    },
+                    native: {},
+                },
+                { preserve: { common: ['name'] } },
+            );
+        }
     }
 
     /**
@@ -351,6 +404,23 @@ class Shrdzm extends utils.Adapter {
 
         await this.initObisState(id, obisCode);
         this.obisIds[`${id}-${obisCode}`] = true;
+    }
+
+    /**
+     * setObis
+     *
+     * sets state identified by obis code
+     *
+     * @param id shrzdm device id
+     * @param obis OBIS code
+     * @param val value to be set
+     */
+
+    private async setObis(id: ShrzmDeviceId, obisCode: ObisCode, value: number): Promise<void> {
+        this.log.silly(`setObis(${id}, ${obisCode}, ${value})`);
+
+        const obisId = obisCode.replaceAll('.', '_');
+        await this.setState(`${id}.live.${obisId}`, value, true);
     }
 
     /**

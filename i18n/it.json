@@ -1,0 +1,20 @@
+{
+    "lblPeakActivePowerConsumed": "Potenza efficace del picco (consumato)",
+    "lblPeakActivePowerProduced": "Potenza efficace del picco (prodotto)",
+    "lblActivePowerConsumed": "potere efficace (consumato)",
+    "lblActivePowerProduced": "Potenza efficace (prodotto)",
+    "lblReactivePowerConsumed": "potere reattivo (consumato)",
+    "lblReactivePowerProduced": "Potere reattivo (prodotto",
+    "lblActiveEnergyConsumed": "energia efficace totale (consumata)",
+    "lblActiveEnergyT1Consumed": "Energia efficace totale HT (consumato)",
+    "lblActiveEnergyT2Consumed": "Energia efficace totale LT (consumato)",
+    "lblACtiveEnergyProduced": "energia efficace totale (prodotta)",
+    "lblActiveEnergyT1Produced": "Energia efficace totale HT (prodotto)",
+    "lblActiveEnergyT2Produced": "Energia efficace totale LT (prodotto)",
+    "lblReactiveEnergyConsumed": "Energia reattiva totale (consumata)",
+    "lblReactiveEnergyProduced": "Energia reattiva totale (prodotta)",
+    "lblPower": "Potenza effettiva attuale",
+    "lblInfo": "informazioni",
+    "lblInfoOnline": "dispositivo online",
+    "lblInfoTimestamp": "timestamp"
+}
