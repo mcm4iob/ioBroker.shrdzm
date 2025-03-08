@@ -5,7 +5,6 @@
 import * as utils from '@iobroker/adapter-core';
 import dgram, { type RemoteInfo } from 'node:dgram';
 
-
 type ShrdzmMsg = {
     id: string;
     data: {
