@@ -25,7 +25,7 @@ You can check other adapters for examples or ask in the developer community. Usi
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.0.1-alpha.3 (2025-03-13)
 * (mcm1957) initial release
 
 ## License
