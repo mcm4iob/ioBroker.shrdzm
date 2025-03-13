@@ -16,5 +16,17 @@
     "lblPower": "Huidige effectieve kracht",
     "lblInfo": "informatie",
     "lblInfoOnline": "apparaat online",
-    "lblInfoTimestamp": "tijdstempel"
+    "lblInfoTimestamp": "tijdstempel",
+    "lblLive": "Live gegevens",
+    "lblHistory": "historische gegevens",
+    "lblCurr": "waarde bij het huidige interval",
+    "lblLast": "waarde bij het laatste interval",
+    "lblCurrId": "ID van het huidige interval",
+    "lblLastId": "ID van het laatste interval",
+    "lblCurrStart": "waarde bij het begin van het huidige interval",
+    "lblLastStart": "waarde bij het begin van het laatste interval",
+    "lblMinute": "interval van 1 minuut",
+    "lblQuarter": "interval van 15 minuten",
+    "lblHour": "interval van 1 uur",
+    "lblDay": "interval van 1 dag"
 }

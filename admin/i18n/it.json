@@ -1,5 +1,12 @@
 {
     "option1": "option1",
     "option2": "option2",
-    "shrdzm adapter settings": "Impostazioni dell'adattatore per shrdzm"
+    "shrdzm adapter settings": "Impostazioni dell'adattatore per shrdzm",
+    "lblPort": "Porta",
+    "lblDevices": "Dispositivi",
+    "lblUdpFwdEnable": "Abilita l'inoltro UDP",
+    "lblUdpFwdAddress": "Indirizzo di inoltro UDP",
+    "lblUdpFwdPort": "Porta di inoltro UDP",
+    "lblStdConfig": "Configurazione",
+    "lblExpertConfig": "Configurazione estesa"
 }

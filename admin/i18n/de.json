@@ -1,5 +1,12 @@
 {
     "option1": "option1",
     "option2": "option2",
-    "shrdzm adapter settings": "Adaptereinstellungen für shrdzm"
+    "shrdzm adapter settings": "Adaptereinstellungen für shrdzm",
+    "lblPort": "Hafen",
+    "lblDevices": "Geräte",
+    "lblUdpFwdEnable": "Aktivieren Sie die UDP -Weiterleitung",
+    "lblUdpFwdAddress": "UDP -Weiterleitungsadresse",
+    "lblUdpFwdPort": "UDP -Weiterleitungsanschluss",
+    "lblStdConfig": "Konfiguration",
+    "lblExpertConfig": "Erweiterte Konfiguration"
 }

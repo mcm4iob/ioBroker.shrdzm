@@ -107,7 +107,10 @@
   },
   "native": {
     "port": 0,
-    "devices": ""
+    "devices": "",
+    "udpFwdEnable": false,
+    "udpFwdAddress": "",
+    "udpFwdPort": 0
   },
   "objects": [],
   "instanceObjects": [

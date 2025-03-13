@@ -1,5 +1,12 @@
 {
     "option1": "option1",
     "option2": "option2",
-    "shrdzm adapter settings": "Paramètres d'adaptateur pour shrdzm"
+    "shrdzm adapter settings": "Paramètres d'adaptateur pour shrdzm",
+    "lblPort": "Port",
+    "lblDevices": "Dispositifs",
+    "lblUdpFwdEnable": "Activer le transfert UDP",
+    "lblUdpFwdAddress": "Adresse de transfert UDP",
+    "lblUdpFwdPort": "Port de transfert UDP",
+    "lblStdConfig": "Configuration",
+    "lblExpertConfig": "Configuration prolongée"
 }

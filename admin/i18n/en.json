@@ -1,5 +1,10 @@
 {
+    "shrdzm adapter settings": "Adapter settings for shrdzm",
     "lblPort": "Port",
     "lblDevices": "Devices",
-    "shrdzm adapter settings": "Adapter settings for shrdzm"
+    "lblUdpFwdEnable": "Enable UDP forwarding",
+    "lblUdpFwdAddress": "UDP forwarding address",
+    "lblUdpFwdPort": "UDP forwarding port",
+    "lblStdConfig":"Configuration",
+    "lblExpertConfig":"Extended Configuration"
 }

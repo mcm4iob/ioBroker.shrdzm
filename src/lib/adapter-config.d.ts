@@ -6,6 +6,9 @@ declare global {
         interface AdapterConfig {
             port: number;
             devices: string;
+            udpFwdEnable: boolean;
+            udpFwdAddress: string;
+            udpFwdPort: unsigned;
         }
     }
 }

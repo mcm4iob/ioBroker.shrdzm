@@ -23,96 +23,127 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var utils = __toESM(require("@iobroker/adapter-core"));
 var import_node_dgram = __toESM(require("node:dgram"));
+var history = __toESM(require("./lib/shrdzmHistory"));
 const OBIS = {
   "1.6.0": {
     // Viertelstundenmaximum (Bezug) in kW
     name: "lblPeakActivePowerConsumed",
     role: "value.power.consumed",
-    unit: "W"
+    unit: "W",
+    histEnergy: false,
+    histPower: false
   },
   "2.6.0": {
     // Viertelstundenmaximum (Einspeisung) in kW
     name: "lblPeakActivePowerProduced",
     role: "value.power.produced",
-    unit: "Wh"
+    unit: "Wh",
+    histEnergy: false,
+    histPower: false
   },
   "1.7.0": {
     // Momentanleistung (Bezug) in kW
     name: "lblActivePowerConsumed",
     role: "value.power.consumed",
-    unit: "W"
+    unit: "W",
+    histEnergy: false,
+    histPower: true
   },
   "2.7.0": {
     // Momentanleistung (Einspeisung) in kW
     name: "lblActivePowerProduced",
     role: "value.power.produced",
-    unit: "W"
+    unit: "W",
+    histEnergy: false,
+    histPower: true
   },
   "3.7.0": {
     // Momentanblindleistung (Bezug) in kVar
     name: "lblReactivePowerConsumed",
     role: "value.power.reactive",
-    unit: "Var"
+    unit: "Var",
+    histEnergy: false,
+    histPower: false
   },
   "4.7.0": {
     // Momentanblindleistung (Einspeisung) in kVar
     name: "lblReactivePowerProduced",
     role: "value.power.reactive",
-    unit: "Var"
+    unit: "Var",
+    histEnergy: false,
+    histPower: false
   },
   "1.8.0": {
     // Summe Energie / Zählerstand (Bezug) in kWh
     name: "lblActiveEnergyConsumed",
     role: "value.energy.consumed",
-    unit: "Wh"
+    unit: "Wh",
+    histEnergy: true,
+    histPower: false
   },
   "1.8.1": {
     // Zählerstand (Bezug) T1 (NT) in kWh
     name: "lblActiveEnergyT1Consumed",
     role: "value.energy.consumed",
-    unit: "Wh"
+    unit: "Wh",
+    histEnergy: false,
+    histPower: false
   },
   "1.8.2": {
     // Zählerstand (Bezug) T2 (HT) in kWh
     name: "lblActiveEnergyT2Consumed",
     role: "value.energy.consumed",
-    unit: "Wh"
+    unit: "Wh",
+    histEnergy: false,
+    histPower: false
   },
   "2.8.0": {
     // Summe Energie Zählerstand (Einspeisung) in kWh
     name: "lblACtiveEnergyProduced",
     role: "value.energy.produced",
-    unit: "Wh"
+    unit: "Wh",
+    histEnergy: true,
+    histPower: false
   },
   "2.8.1": {
     // Zählerstand (Einspeisung) T1 (NT) in kWh
     name: "lblActiveEnergyT1Produced",
     role: "value.energy.produced",
-    unit: "Wh"
+    unit: "Wh",
+    histEnergy: false,
+    histPower: false
   },
   "2.8.2": {
     // Zählerstand (Einspeisung) T2 (HT) in kWh
     name: "lblActiveEnergyT2Produced",
     role: "value.energy.produced",
-    unit: "Wh"
+    unit: "Wh",
+    histEnergy: false,
+    histPower: false
   },
   "3.8.0": {
     // Summe Blindenergie (Bezug) in kVarh
     name: "lblReactiveEnergyConsumed",
     role: "value.energy.reactive",
-    unit: "Var"
+    unit: "Var",
+    histEnergy: false,
+    histPower: false
   },
   "4.8.0": {
     // Summe Blindenergie (Einspeisung) in kVarh
     name: "lblReactiveEnergyProduced",
     role: "value.energy.reactive",
-    unit: "Var"
+    unit: "Var",
+    histEnergy: false,
+    histPower: false
   },
   "16.7.0": {
     // Momentleistung (saldiert) in kW
     name: "lblPower",
     role: "value.power",
-    unit: "W"
+    unit: "W",
+    histEnergy: false,
+    histPower: true
   }
 };
 class Shrdzm extends utils.Adapter {
@@ -168,6 +199,7 @@ class Shrdzm extends utils.Adapter {
    * @param rinfo remote infor record
    */
   async processUdp4Message(msg, rinfo) {
+    var _a, _b;
     this.log.silly(`processUdp4SrvMessage(${msg.toString()}, ${JSON.stringify(rinfo)})`);
     let msgJson;
     try {
@@ -189,16 +221,80 @@ class Shrdzm extends utils.Adapter {
       return;
     }
     if (!await this.validateDevice(msgJson.id)) {
-      this.log.debug(`ignoreing message from device ${msgJson.id} due to filter setting`);
+      this.log.debug(`ignoring message from device ${msgJson.id} due to filter setting`);
       return;
     }
+    const ts = Date.parse(data.timestamp);
+    await this.setState(`${msgJson.id}.info.timestamp`, ts, true);
+    await this.setState(`${msgJson.id}.info.uptime`, data.uptime, true);
     for (const obisCode in msgJson.data) {
       if (!obisCode.match(/\d+\.\d+\.\d+/)) {
         continue;
       }
       await this.validateObis(msgJson.id, obisCode);
-      const value = Number(msgJson.data[obisCode]);
-      await this.setObis(msgJson.id, obisCode, value);
+      await this.setObisLiveState(msgJson.id, obisCode, Number(msgJson.data[obisCode]), ts);
+      if ((_a = OBIS[obisCode]) == null ? void 0 : _a.histEnergy) {
+        const result = history.doEnergy(ts, obisCode, Number(msgJson.data[obisCode]));
+        await this.setObisHistoryState(msgJson.id, obisCode, "minute.curr", result.minute.curr.value, ts);
+        await this.setObisHistoryState(msgJson.id, obisCode, "quarter.curr", result.quarter.curr.value, ts);
+        await this.setObisHistoryState(msgJson.id, obisCode, "hour.curr", result.hour.curr.value, ts);
+        await this.setObisHistoryState(msgJson.id, obisCode, "day.curr", result.day.curr.value, ts);
+        if (result.minute.switched) {
+          await this.setObisHistoryState(msgJson.id, obisCode, "minute.currId", result.minute.curr.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "minute.currStart", result.minute.curr.startValue, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "minute.last", result.minute.last.value, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "minute.lastId", result.minute.last.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "minute.lastStart", result.minute.last.startValue, ts);
+        }
+        if (result.quarter.switched) {
+          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.currId", result.quarter.curr.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.currStart", result.quarter.curr.startValue, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.last", result.quarter.last.value, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.lastId", result.quarter.last.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.lastStart", result.quarter.last.startValue, ts);
+        }
+        if (result.hour.switched) {
+          await this.setObisHistoryState(msgJson.id, obisCode, "hour.currId", result.hour.curr.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "hour.currStart", result.hour.curr.startValue, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "hour.last", result.hour.last.value, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "hour.lastId", result.hour.last.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "hour.lastStart", result.hour.last.startValue, ts);
+        }
+        if (result.day.switched) {
+          await this.setObisHistoryState(msgJson.id, obisCode, "day.currId", result.day.curr.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "day.currStart", result.day.curr.startValue, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "day.last", result.day.last.value, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "day.lastId", result.day.last.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "day.lastStart", result.day.last.startValue, ts);
+        }
+      }
+      if ((_b = OBIS[obisCode]) == null ? void 0 : _b.histPower) {
+        const result = history.doPower(ts, obisCode, Number(msgJson.data[obisCode]));
+        await this.setObisHistoryState(msgJson.id, obisCode, "minute.curr", result.minute.curr.value, ts);
+        await this.setObisHistoryState(msgJson.id, obisCode, "quarter.curr", result.quarter.curr.value, ts);
+        await this.setObisHistoryState(msgJson.id, obisCode, "hour.curr", result.hour.curr.value, ts);
+        await this.setObisHistoryState(msgJson.id, obisCode, "day.curr", result.day.curr.value, ts);
+        if (result.minute.switched) {
+          await this.setObisHistoryState(msgJson.id, obisCode, "minute.currId", result.minute.curr.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "minute.last", result.minute.last.value, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "minute.lastId", result.minute.last.id, ts);
+        }
+        if (result.quarter.switched) {
+          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.currId", result.quarter.curr.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.last", result.quarter.last.value, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.lastId", result.quarter.last.id, ts);
+        }
+        if (result.hour.switched) {
+          await this.setObisHistoryState(msgJson.id, obisCode, "hour.currId", result.hour.curr.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "hour.last", result.hour.last.value, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "hour.lastId", result.hour.last.id, ts);
+        }
+        if (result.day.switched) {
+          await this.setObisHistoryState(msgJson.id, obisCode, "day.currId", result.day.curr.id, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "day.last", result.day.last.value, ts);
+          await this.setObisHistoryState(msgJson.id, obisCode, "day.lastId", result.day.last.id, ts);
+        }
+      }
     }
   }
   /**
@@ -281,7 +377,7 @@ class Shrdzm extends utils.Adapter {
       {
         type: "state",
         common: {
-          name: `lblInfoUptime`,
+          name: utils.I18n.getTranslatedObject(`lblInfoUptime`),
           type: "string",
           role: "value",
           read: true,
@@ -296,7 +392,18 @@ class Shrdzm extends utils.Adapter {
       {
         type: "channel",
         common: {
-          name: `lblLive`
+          name: utils.I18n.getTranslatedObject(`lblLive`)
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+    await this.extendObject(
+      `${id}.history`,
+      {
+        type: "channel",
+        common: {
+          name: utils.I18n.getTranslatedObject(`lblHistory`)
         },
         native: {}
       },
@@ -329,6 +436,116 @@ class Shrdzm extends utils.Adapter {
         },
         { preserve: { common: ["name"] } }
       );
+      if (OBIS[obis].histEnergy || OBIS[obis].histPower) {
+        await this.extendObject(
+          `${id}.history.${obisId}`,
+          {
+            type: "folder",
+            common: {
+              name: utils.I18n.getTranslatedObject(OBIS[obis].name)
+            },
+            native: {}
+          },
+          { preserve: { common: ["name"] } }
+        );
+        for (const range of ["Minute", "Quarter", "Hour", "Day"]) {
+          await this.extendObject(
+            `${id}.history.${obisId}.${range.toLowerCase()}`,
+            {
+              type: "folder",
+              common: {
+                name: utils.I18n.getTranslatedObject(`lbl${range}`)
+              },
+              native: {}
+            },
+            { preserve: { common: ["name"] } }
+          );
+          await this.extendObject(
+            `${id}.history.${obisId}.${range.toLowerCase()}.currId`,
+            {
+              type: "state",
+              common: {
+                name: utils.I18n.getTranslatedObject(`lblCurrId`),
+                type: "number",
+                role: "value"
+              },
+              native: {}
+            },
+            { preserve: { common: ["name"] } }
+          );
+          await this.extendObject(
+            `${id}.history.${obisId}.${range.toLowerCase()}.lastId`,
+            {
+              type: "state",
+              common: {
+                name: utils.I18n.getTranslatedObject(`lblLastId`),
+                type: "number",
+                role: "value"
+              },
+              native: {}
+            },
+            { preserve: { common: ["name"] } }
+          );
+          await this.extendObject(
+            `${id}.history.${obisId}.${range.toLowerCase()}.curr`,
+            {
+              type: "state",
+              common: {
+                name: utils.I18n.getTranslatedObject(`lblCurr`),
+                type: "number",
+                role: OBIS[obis].role,
+                unit: OBIS[obis].unit
+              },
+              native: {}
+            },
+            { preserve: { common: ["name"] } }
+          );
+          await this.extendObject(
+            `${id}.history.${obisId}.${range.toLowerCase()}.last`,
+            {
+              type: "state",
+              common: {
+                name: utils.I18n.getTranslatedObject(`lblLast`),
+                type: "number",
+                role: OBIS[obis].role,
+                unit: OBIS[obis].unit
+              },
+              native: {}
+            },
+            { preserve: { common: ["name"] } }
+          );
+          if (OBIS[obis].histEnergy) {
+            await this.extendObject(
+              `${id}.history.${obisId}.${range.toLowerCase()}.currStart`,
+              {
+                type: "state",
+                common: {
+                  name: utils.I18n.getTranslatedObject(`lblCurrStart`),
+                  type: "number",
+                  role: OBIS[obis].role,
+                  unit: OBIS[obis].unit
+                },
+                native: {}
+              },
+              { preserve: { common: ["name"] } }
+            );
+            await this.extendObject(
+              `${id}.history.${obisId}.${range.toLowerCase()}.lastStart`,
+              {
+                type: "state",
+                common: {
+                  name: utils.I18n.getTranslatedObject(`lblLastStart`),
+                  type: "number",
+                  role: OBIS[obis].role,
+                  unit: OBIS[obis].unit
+                },
+                native: {}
+              },
+              { preserve: { common: ["name"] } }
+            );
+          }
+        }
+      }
     } else {
       await this.extendObject(
         `${id}.live.${obisId}`,
@@ -364,18 +581,43 @@ class Shrdzm extends utils.Adapter {
     this.obisIds[`${id}-${obisCode}`] = true;
   }
   /**
-   * setObis
+   * setObisLiveState
    *
    * sets state identified by obis code
    *
    * @param id shrzdm device id
    * @param obis OBIS code
    * @param val value to be set
+   * @param ts timestamp to use
    */
-  async setObis(id, obisCode, value) {
-    this.log.silly(`setObis(${id}, ${obisCode}, ${value})`);
+  async setObisLiveState(id, obisCode, value, ts) {
+    this.log.silly(`setObisLiveState(${id}, ${obisCode}, ${value})`);
     const obisId = obisCode.replaceAll(".", "_");
-    await this.setState(`${id}.live.${obisId}`, value, true);
+    await this.setState(`${id}.live.${obisId}`, {
+      val: value,
+      ack: true,
+      ts
+    });
+  }
+  /**
+   * setObisHistoryState
+   *
+   * sets history state identified by obis code and rangeId
+   *
+   * @param id shrzdm device id
+   * @param obis OBIS code
+   * @param rangeId
+   * @param val value to be set
+   * @param ts timestamp to use
+   */
+  async setObisHistoryState(id, obisCode, rangeId, value, ts) {
+    this.log.silly(`setObisHistoryState(${id}, ${obisCode}, ${value})`);
+    const obisId = obisCode.replaceAll(".", "_");
+    await this.setState(`${id}.history.${obisId}.${rangeId}`, {
+      val: value,
+      ack: true,
+      ts
+    });
   }
   /**
    *
@@ -454,7 +696,18 @@ ${err.stack}`);
    * @param rinfo remote information provided by dram service
    */
   async onUdp4SrvMessage(msg, rinfo) {
+    var _a;
     this.log.debug(`onUdp4SrvMessage(${msg.toString()}, ${rinfo.address}:${rinfo.port})`);
+    if (this.config.udpFwdEnable && this.config.udpFwdAddress !== "" && this.config.udpFwdPort) {
+      const address = this.config.udpFwdAddress;
+      const port = this.config.udpFwdPort;
+      this.log.debug(`forwarding to ${address}:${port}`);
+      try {
+        (_a = this.udp4Srv) == null ? void 0 : _a.send(msg, port, address);
+      } catch (e) {
+        this.log.error(`erroro forwarding message to ${address}:${port} - ${e.message}`);
+      }
+    }
     await this.processUdp4Message(msg, rinfo);
   }
   /**

@@ -16,5 +16,17 @@
     "lblPower": "Obecna skuteczna moc",
     "lblInfo": "informacja",
     "lblInfoOnline": "urządzenie online",
-    "lblInfoTimestamp": "znacznik czasu"
+    "lblInfoTimestamp": "znacznik czasu",
+    "lblLive": "Dane na żywo",
+    "lblHistory": "Dane historyczne",
+    "lblCurr": "wartość w bieżącym przedziale",
+    "lblLast": "wartość w ostatnim przedziale",
+    "lblCurrId": "ID bieżącego interwału",
+    "lblLastId": "Id of Last Interval",
+    "lblCurrStart": "wartość na początku bieżącego interwału",
+    "lblLastStart": "wartość na początku ostatniego przedziału",
+    "lblMinute": "Odstęp 1 minuty",
+    "lblQuarter": "Odstęp wynoszący 15 minut",
+    "lblHour": "Odstęp 1 godziny",
+    "lblDay": "Odstęp 1 dnia"
 }

@@ -1,5 +1,12 @@
 {
     "option1": "option1",
     "option2": "option2",
-    "shrdzm adapter settings": "Настройки адаптера для shrdzm"
+    "shrdzm adapter settings": "Настройки адаптера для shrdzm",
+    "lblPort": "Порт",
+    "lblDevices": "Устройства",
+    "lblUdpFwdEnable": "Включить переадресацию UDP",
+    "lblUdpFwdAddress": "Адрес пересылки UDP",
+    "lblUdpFwdPort": "UDP пересылка порта",
+    "lblStdConfig": "Конфигурация",
+    "lblExpertConfig": "Расширенная конфигурация"
 }

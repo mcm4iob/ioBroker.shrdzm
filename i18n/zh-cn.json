@@ -16,5 +16,17 @@
     "lblPower": "当前有效的功率",
     "lblInfo": "信息",
     "lblInfoOnline": "在线设备",
-    "lblInfoTimestamp": "时间戳"
+    "lblInfoTimestamp": "时间戳",
+    "lblLive": "实时数据",
+    "lblHistory": "史料",
+    "lblCurr": "当前间隔",
+    "lblLast": "终于间隔",
+    "lblCurrId": "当前间隔的ID",
+    "lblLastId": "最后一个间隔的ID",
+    "lblCurrStart": "当前间隔开始时值",
+    "lblLastStart": "最后一个间隔开始的价值",
+    "lblMinute": "间隔1分钟",
+    "lblQuarter": "间隔15分钟",
+    "lblHour": "间隔1小时",
+    "lblDay": "间隔1天"
 }

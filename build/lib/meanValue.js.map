@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/lib/meanValue.ts"],
+  "sourcesContent": ["/**\n * MeanValue\n *\n * This class calculates numeric mean values\n *\n */\nexport class MeanValue {\n    private _sum: number;\n    private _count: number;\n\n    /**\n     * constructor\n     *\n     */\n    constructor() {\n        this._sum = 0;\n        this._count = 0;\n    }\n\n    /**\n     * reset\n     *\n     * reinitializes a meanvalue\n     *\n     */\n    reset(): void {\n        this._sum = 0;\n        this._count = 0;\n    }\n\n    /**\n     * add\n     *\n     * updates meanvalue by adding a new value and returns the new meanValue\n     *\n     * @param value new value to add\n     * @returns current meanValue\n     */\n    add(value: number): number {\n        this._sum += value;\n        this._count++;\n        return this._sum / this._count;\n    }\n\n    /**\n     * get\n     *\n     * returns current meanValue\n     *\n     * @returns current meanValue\n     */\n    get(): number {\n        return this._sum / this._count;\n    }\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAMO,MAAM,UAAU;AAAA,EACX;AAAA,EACA;AAAA;AAAA;AAAA;AAAA;AAAA,EAMR,cAAc;AACV,SAAK,OAAO;AACZ,SAAK,SAAS;AAAA,EAClB;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EAQA,QAAc;AACV,SAAK,OAAO;AACZ,SAAK,SAAS;AAAA,EAClB;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EAUA,IAAI,OAAuB;AACvB,SAAK,QAAQ;AACb,SAAK;AACL,WAAO,KAAK,OAAO,KAAK;AAAA,EAC5B;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EASA,MAAc;AACV,WAAO,KAAK,OAAO,KAAK;AAAA,EAC5B;AACJ;",
+  "names": []
+}

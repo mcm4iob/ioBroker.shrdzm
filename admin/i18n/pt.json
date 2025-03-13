@@ -1,5 +1,12 @@
 {
     "option1": "option1",
     "option2": "option2",
-    "shrdzm adapter settings": "Configurações do adaptador para shrdzm"
+    "shrdzm adapter settings": "Configurações do adaptador para shrdzm",
+    "lblPort": "Porta",
+    "lblDevices": "Dispositivos",
+    "lblUdpFwdEnable": "Ativar encaminhamento UDP",
+    "lblUdpFwdAddress": "Endereço de encaminhamento UDP",
+    "lblUdpFwdPort": "Porta de encaminhamento UDP",
+    "lblStdConfig": "Configuração",
+    "lblExpertConfig": "Configuração estendida"
 }

@@ -1,5 +1,12 @@
 {
     "option1": "option1",
     "option2": "option2",
-    "shrdzm adapter settings": "shrdzm的适配器设置"
+    "shrdzm adapter settings": "shrdzm的适配器设置",
+    "lblPort": "港口",
+    "lblDevices": "设备",
+    "lblUdpFwdEnable": "启用UDP转发",
+    "lblUdpFwdAddress": "UDP转发地址",
+    "lblUdpFwdPort": "UDP转发端口",
+    "lblStdConfig": "配置",
+    "lblExpertConfig": "扩展配置"
 }

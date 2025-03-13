@@ -16,5 +16,17 @@
     "lblPower": "poder efetivo atual",
     "lblInfo": "Informação",
     "lblInfoOnline": "dispositivo online",
-    "lblInfoTimestamp": "Timestamp"
+    "lblInfoTimestamp": "Timestamp",
+    "lblLive": "dados ao vivo",
+    "lblHistory": "dados históricos",
+    "lblCurr": "valor no intervalo atual",
+    "lblLast": "valor no último intervalo",
+    "lblCurrId": "ID do intervalo atual",
+    "lblLastId": "ID do último intervalo",
+    "lblCurrStart": "valor no início do intervalo atual",
+    "lblLastStart": "valor no início do último intervalo",
+    "lblMinute": "intervalo de 1 minuto",
+    "lblQuarter": "intervalo de 15 minutos",
+    "lblHour": "intervalo de 1 hora",
+    "lblDay": "intervalo de 1 dia"
 }

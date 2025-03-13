@@ -1,5 +1,12 @@
 {
     "option1": "option1",
     "option2": "option2",
-    "shrdzm adapter settings": "Ajustes del adaptador para shrdzm"
+    "shrdzm adapter settings": "Ajustes del adaptador para shrdzm",
+    "lblPort": "Puerto",
+    "lblDevices": "Dispositivos",
+    "lblUdpFwdEnable": "Habilitar el reenvío de UDP",
+    "lblUdpFwdAddress": "Dirección de reenvío de UDP",
+    "lblUdpFwdPort": "Puerto de reenvío de UDP",
+    "lblStdConfig": "Configuración",
+    "lblExpertConfig": "Configuración extendida"
 }

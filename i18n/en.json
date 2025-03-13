@@ -16,6 +16,18 @@
     "lblPower": "current effective power",
     "lblInfo": "information",
     "lblInfoOnline": "device online",
-    "lblInfoTimestamp": "timestamp"
+    "lblInfoTimestamp": "timestamp",
+    "lblLive": "live data",
+    "lblHistory": "historical data",
+    "lblCurr": "value at current interval",
+    "lblLast": "value at last interval",
+    "lblCurrId": "id of current interval",
+    "lblLastId": "id of last interval",
+    "lblCurrStart": "value at start of current interval",
+    "lblLastStart": "value at start of last interval",
+    "lblMinute": "interval of 1 minute",
+    "lblQuarter": "interval of 15 minutes",
+    "lblHour": "interval of 1 hour",
+    "lblDay": "interval of 1 day"
 }
 

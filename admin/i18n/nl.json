@@ -1,5 +1,12 @@
 {
     "option1": "option1",
     "option2": "option2",
-    "shrdzm adapter settings": "Adapterinstellingen voor shrdzm"
+    "shrdzm adapter settings": "Adapterinstellingen voor shrdzm",
+    "lblPort": "Haven",
+    "lblDevices": "Apparaten",
+    "lblUdpFwdEnable": "Schakel UDP door",
+    "lblUdpFwdAddress": "UDP doorstuuradres",
+    "lblUdpFwdPort": "UDP doorstuurpoort",
+    "lblStdConfig": "Configuratie",
+    "lblExpertConfig": "Uitgebreide configuratie"
 }

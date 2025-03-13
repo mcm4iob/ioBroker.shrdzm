@@ -5,4 +5,5 @@ export default {
     ...prettierConfig,
     // uncomment next line if you prefer double quotes
     // singleQuote: false,
+    printWidth: 132,
 }
