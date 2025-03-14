@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "shrdzm",
-    "version": "0.0.1-alpha.4",
+    "version": "0.0.1-alpha.5",
     "news": {
+      "0.0.1-alpha.5": {
+        "en": "initial release",
+        "de": "erstausstrahlung",
+        "ru": "первоначальное освобождение",
+        "pt": "lançamento inicial",
+        "nl": "eerste release",
+        "fr": "libération initiale",
+        "it": "rilascio iniziale",
+        "es": "liberación inicial",
+        "pl": "początkowe zwolnienie",
+        "uk": "початковий реліз",
+        "zh-cn": "初步释放"
+      },
       "0.0.1-alpha.4": {
         "en": "initial release",
         "de": "erstausstrahlung",
