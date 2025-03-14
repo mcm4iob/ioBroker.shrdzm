@@ -1,24 +1,71 @@
 ![Logo](admin/shrdzm.png)
 # ioBroker.shrdzm
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.shrdzm.svg)](https://www.npmjs.com/package/iobroker.shrdzm)
+[![GitHub license](https://img.shields.io/github/license/mcm4iob/ioBroker.shrdzm](https://github.com/mcm4iob/ioBroker.shrdzm/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.shrdzm.svg)](https://www.npmjs.com/package/iobroker.shrdzm)
-![Number of Installations](https://iobroker.live/badges/shrdzm-installed.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/mcm4iob/ioBroker.shrdzm)
+[![Translation status](https://weblate.iobroker.net/widgets/adapters/-/shrdzm/svg-badge.svg)](https://weblate.iobroker.net/engage/adapters/?utm_source=widget)</br>
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mcm4iob/ioBroker.shrdzm)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/mcm4iob/ioBroker.shrdzm/latest)
+![GitHub last commit](https://img.shields.io/github/last-commit/mcm4iob/ioBroker.shrdzm)
+![GitHub issues](https://img.shields.io/github/issues/mcm4iob/ioBroker.shrdzm)
+</br>
+**Version:** </br>
+[![NPM version](http://img.shields.io/npm/v/iobroker.shrdzm.svg)](https://www.npmjs.com/package/iobroker.shrdzm)
 ![Current version in stable repository](https://iobroker.live/badges/shrdzm-stable.svg)
+![Number of Installations](https://iobroker.live/badges/shrdzm-installed.svg)
+</br>
+**Tests:** </br>
+[![Test and Release](https://github.com/mcm4iob/ioBroker.shrdzm/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/mcm4iob/ioBroker.shrdzm/actions/workflows/test-and-release.yml)
+[![CodeQL](https://github.com/mcm4iob/ioBroker.shrdzm/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/mcm4iob/ioBroker.shrdzm/actions/workflows/github-code-scanning/codeql)
+</br>
+[![Donate](https://img.shields.io/badge/paypal-donate%20|%20spenden-blue.svg)](https://paypal.me/mcm1957atIoBroker)
 
-[![NPM](https://nodei.co/npm/iobroker.shrdzm.png?downloads=true)](https://nodei.co/npm/iobroker.shrdzm/)
-
-**Tests:** ![Test and Release](https://github.com/mcm1957/ioBroker.shrdzm/workflows/Test%20and%20Release/badge.svg)
+**************************************************************************************************************
+## Sentry
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.**
+For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
+**************************************************************************************************************
 
 ## shrdzm adapter for ioBroker
 
-Integrates the SHRDZM smartmater interface into ioBroker
+This adapter integrates the SHRDZM smartmeter interface available from *SHRDZM IT Services e.U.* into ioBroker. A descritpion of the interface is available [here](https://cms.shrdzm.com/produkt/smartmeter-modul/).
 
-### DISCLAIMER
+Note that this adapter is not related to the company mentioned above in any way and that no commercial relationship exists at all.
 
-Please make sure that you consider copyrights and trademarks when you use names or logos of a company and add a disclaimer to your README.
-You can check other adapters for examples or ask in the developer community. Using a name or logo of a company without permission may cause legal problems for you.
+## Disclaimer
+**All product and company names or logos are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them or any associated subsidiaries! This personal project is maintained in spare time and has no business goal.**
 
+**************************************************************************************************************
+
+## Configuration
+
+Install and setup you SHRZDM interface as described by the manufactures documentation. This adapter connects to the interface using an udp (IPv4) connection. The following steps are required to start operation:
+
+- install iobroker Adapter the usual way
+- open ioBroker adminUI interface to configure the adapter
+- select a free port at adminUI, default is set to port 9000 but any free prot can be used.
+
+- open SHRZDM configuration interface (using a webbrower) 
+![alt text](./doc/shrzdm-cloud.pgn)
+- select cloud configuration
+- enter ip address (IPv4 only) of your ioBroker host and port number selected into field 'Server'
+- aktivate 'UDP send'
+- save cloud settings
+
+The SHRDZM device shoul start to send data immeidiatly at the intervall configured at page 'settings'. 
+
+## Operation
+
+The adapter will create states for all obos data received from all devices. If you have multipleSHRZDM devices installed and want to limit the devices accepted, you can enter a list of allowed devices into the configuration of the adapter. If no devices are configured, data from all senders will be accepted.
+
+**************************************************************************************************************
+
+**If you like it, please consider a donation:**
+  
+[![paypal](https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif)](https://paypal.me/mcm1957atIoBroker)
+
+**************************************************************************************************************
 
 ## Changelog
 <!--
