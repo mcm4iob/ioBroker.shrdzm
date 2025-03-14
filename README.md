@@ -5,9 +5,9 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.shrdzm.svg)](https://www.npmjs.com/package/iobroker.shrdzm)
 ![Number of Installations (latest)](http://iobroker.live/badges/shrdzm-installed.svg)
 ![Number of Installations (stable)](http://iobroker.live/badges/shrdzm-stable.svg)
-![Test and Release](https://github.com/simatec/ioBroker.shrdzm/workflows/Test%20and%20Release/badge.svg)
+![Test and Release](https://github.com/mcm4iob/ioBroker.shrdzm/workflows/Test%20and%20Release/badge.svg)
 
-[![License](https://img.shields.io/github/license/simatec/ioBroker.shrdzm?style=flat)](https://github.com/simatec/ioBroker.shrdzm/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/mcm4iob/ioBroker.shrdzm?style=flat)](https://github.com/mcm4iob/ioBroker.shrdzm/blob/main/LICENSE)
 [![Donate](https://img.shields.io/badge/paypal-donate%20|%20spenden-blue.svg)](https://paypal.me/mcm1957atIoBroker)
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/mcm1957)
 
