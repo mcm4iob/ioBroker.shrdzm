@@ -71,7 +71,7 @@
                 },
                 "powerRate":{
                     "type": "select",
-                    "label": "lblPower  Rate",
+                    "label": "lblPowerRate",
                     "options": [
                         {"label": "none", "value": 0},
                         {"label": "max", "value": 1},
@@ -97,7 +97,7 @@
             "items": {
                 "udpFwdEnable": {
                     "type": "checkbox",
-                    "label": "lblUdpEnable",
+                    "label": "lblUdpFwdEnable",
                     "newLine": true,
                     "expertMode": true,
                     "default": false,

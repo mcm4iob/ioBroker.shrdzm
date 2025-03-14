@@ -8,7 +8,7 @@
     "lblStdConfig":"Configuration",
     "lblExpertConfig":"Extended Configuration",
     "lblHdr_1": "General Setup",
-    "lblHdr_2": "Processing options",
+    "lblHdr_2": "Processing Options",
     "lblEnergyRate": "Update-Rate for Energyinformation",
     "lblPowerRate": "Update-Rate for Powerinformation"
 }
