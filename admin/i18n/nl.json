@@ -8,5 +8,9 @@
     "lblUdpFwdAddress": "UDP doorstuuradres",
     "lblUdpFwdPort": "UDP doorstuurpoort",
     "lblStdConfig": "Configuratie",
-    "lblExpertConfig": "Uitgebreide configuratie"
+    "lblExpertConfig": "Uitgebreide configuratie",
+    "lblHdr_1": "Algemene opstelling",
+    "lblHdr_2": "Verwerkingsopties",
+    "lblEnergyRate": "UPDATRATE VOOR ENERGY INFORMATIE",
+    "lblPowerRate": "UPDATE-rate voor PowerInformation"
 }

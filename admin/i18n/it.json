@@ -8,5 +8,9 @@
     "lblUdpFwdAddress": "Indirizzo di inoltro UDP",
     "lblUdpFwdPort": "Porta di inoltro UDP",
     "lblStdConfig": "Configurazione",
-    "lblExpertConfig": "Configurazione estesa"
+    "lblExpertConfig": "Configurazione estesa",
+    "lblHdr_1": "Setup generale",
+    "lblHdr_2": "Opzioni di elaborazione",
+    "lblEnergyRate": "Rate di aggiornamento per EnergyEnformation",
+    "lblPowerRate": "Rate di aggiornamento per PowerInformation"
 }

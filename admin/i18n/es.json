@@ -8,5 +8,9 @@
     "lblUdpFwdAddress": "Dirección de reenvío de UDP",
     "lblUdpFwdPort": "Puerto de reenvío de UDP",
     "lblStdConfig": "Configuración",
-    "lblExpertConfig": "Configuración extendida"
+    "lblExpertConfig": "Configuración extendida",
+    "lblHdr_1": "Configuración general",
+    "lblHdr_2": "Opciones de procesamiento",
+    "lblEnergyRate": "Tasa de actualización para EnergyInformation",
+    "lblPowerRate": "Tasa de actualización para PowerInformation"
 }

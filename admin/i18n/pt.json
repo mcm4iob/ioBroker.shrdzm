@@ -8,5 +8,9 @@
     "lblUdpFwdAddress": "Endereço de encaminhamento UDP",
     "lblUdpFwdPort": "Porta de encaminhamento UDP",
     "lblStdConfig": "Configuração",
-    "lblExpertConfig": "Configuração estendida"
+    "lblExpertConfig": "Configuração estendida",
+    "lblHdr_1": "Configuração geral",
+    "lblHdr_2": "Opções de processamento",
+    "lblEnergyRate": "Taxa de atualização para informações de energia",
+    "lblPowerRate": "Taxa de atualização para informação do PowerInform"
 }

@@ -6,6 +6,16 @@
             "type": "panel",
             "label": "lblStdConfig",
             "items": {
+                "_header_1": {
+                    "type": "header",
+                    "text": "lblHdr_1",
+                    "size": 3,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12                   
+                },
                 "port": {
                     "type": "port",
                     "label": "lblPort",
@@ -30,60 +40,66 @@
                     "lg": 12,
                     "xl": 12
                 },
-                "minuteHistory": {
-                    "type": "checkbox",
-                    "label": "lblMinuteHistory",
-                    "newLine": true,
-                    "default": true,
+                "_header_2": {
+                    "type": "header",
+                    "text": "lblHdr_2",
+                    "size": 3,
                     "xs": 12,
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
-                    "xl": 12
+                    "xl": 12                   
                 },
-                "quarterHistory": {
-                    "type": "checkbox",
-                    "label": "lblQuarterHistory",
-                    "newLine": true,
-                    "default": true,
+                "energyRate":{
+                    "type": "select",
+                    "label": "lblEnergyRate",
+                    "options": [
+                        {"label": "none", "value": 0},
+                        {"label": "max", "value": 1},
+                        {"label": "1:2", "value": 2},
+                        {"label": "1:5", "value": 5},
+                        {"label": "1:10", "value": 10},
+                        {"label": "1:15", "value": 15},
+                        {"label": "1:30", "value": 30}                                                
+                    ],
+                    "default": 15,
                     "xs": 12,
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12,
-                    "xl": 12
+                    "sm": 8,
+                    "md": 4,
+                    "lg": 2,
+                    "xl": 2                   
                 },
-                "hourHistory": {
-                    "type": "checkbox",
-                    "label": "lblHourHistory",
-                    "newLine": true,
-                    "default": true,
+                "powerRate":{
+                    "type": "select",
+                    "label": "lblPower  Rate",
+                    "options": [
+                        {"label": "none", "value": 0},
+                        {"label": "max", "value": 1},
+                        {"label": "1:2", "value": 2},
+                        {"label": "1:5", "value": 5},
+                        {"label": "1:10", "value": 10},
+                        {"label": "1:15", "value": 15},
+                        {"label": "1:30", "value": 30}                                                
+                    ],
+                    "default": 5,
                     "xs": 12,
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12,
-                    "xl": 12
-                },
-                "dayHistory": {
-                    "type": "checkbox",
-                    "label": "lblDayHistory",
-                    "newLine": true,
-                    "default": true,
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12,
-                    "xl": 12
+                    "sm": 8,
+                    "md": 4,
+                    "lg": 2,
+                    "xl": 2                   
                 }
             }
         },
         "_expertConfig": {
             "type": "panel",
             "label": "lblExpertConfig",
+            "expertMode": true,
             "items": {
                 "udpFwdEnable": {
                     "type": "checkbox",
                     "label": "lblUdpEnable",
                     "newLine": true,
+                    "expertMode": true,
                     "default": false,
                     "xs": 12,
                     "sm": 12,
@@ -95,6 +111,8 @@
                     "type": "text",
                     "label": "lblUdpFwdAddress",
                     "newLine": true,
+                    "hidden": "!data.udpFwdEnable",
+                    "expertMode": true,
                     "default": "",
                     "xs": 8,
                     "sm": 8,
@@ -106,13 +124,17 @@
                     "type": "number",
                     "label": "lblUdpFwdPort",
                     "newLine": false,
-                    "default": 0,
+                    "expertMode": true,
+                    "hidden": "!data.udpFwdEnable",
+                    "default": 9000,
+                    "min": 1,
+                    "max": 65535,
                     "xs": 4,
                     "sm": 4,
                     "md": 3,
                     "lg": 2,
                     "xl": 2
-                }
+                }                
             }
         }
     }

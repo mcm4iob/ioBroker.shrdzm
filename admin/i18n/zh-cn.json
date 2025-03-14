@@ -8,5 +8,9 @@
     "lblUdpFwdAddress": "UDP转发地址",
     "lblUdpFwdPort": "UDP转发端口",
     "lblStdConfig": "配置",
-    "lblExpertConfig": "扩展配置"
+    "lblExpertConfig": "扩展配置",
+    "lblHdr_1": "一般设置",
+    "lblHdr_2": "处理选项",
+    "lblEnergyRate": "能源信息的更新率",
+    "lblPowerRate": "更新速率用于功率信息"
 }

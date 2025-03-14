@@ -8,5 +8,9 @@
     "lblUdpFwdAddress": "Adresse de transfert UDP",
     "lblUdpFwdPort": "Port de transfert UDP",
     "lblStdConfig": "Configuration",
-    "lblExpertConfig": "Configuration prolongée"
+    "lblExpertConfig": "Configuration prolongée",
+    "lblHdr_1": "Configuration générale",
+    "lblHdr_2": "Options de traitement",
+    "lblEnergyRate": "Taux de mise à jour pour l'énergie",
+    "lblPowerRate": "Taux de mise à jour pour PowerInformation"
 }

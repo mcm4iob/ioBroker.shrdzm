@@ -8,7 +8,9 @@ declare global {
             devices: string;
             udpFwdEnable: boolean;
             udpFwdAddress: string;
-            udpFwdPort: unsigned;
+            udpFwdPort: number;
+            energyRate: number;
+            powerRate: number;
         }
     }
 }

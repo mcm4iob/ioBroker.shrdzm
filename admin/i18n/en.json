@@ -6,5 +6,9 @@
     "lblUdpFwdAddress": "UDP forwarding address",
     "lblUdpFwdPort": "UDP forwarding port",
     "lblStdConfig":"Configuration",
-    "lblExpertConfig":"Extended Configuration"
+    "lblExpertConfig":"Extended Configuration",
+    "lblHdr_1": "General Setup",
+    "lblHdr_2": "Processing options",
+    "lblEnergyRate": "Update-Rate for Energyinformation",
+    "lblPowerRate": "Update-Rate for Powerinformation"
 }

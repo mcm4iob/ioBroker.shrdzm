@@ -149,6 +149,8 @@ const OBIS = {
 class Shrdzm extends utils.Adapter {
   udp4Srv = null;
   udp4SrvRetry = 10;
+  intervalOnlineChecker;
+  intervalUpdateRateChecker;
   constructor(options = {}) {
     super({
       ...options,
@@ -170,10 +172,17 @@ class Shrdzm extends utils.Adapter {
       this.disable;
       return;
     }
+    await this.importStatus();
     if (!this.initUdp4Srv()) {
       this.disable;
       return;
     }
+    this.intervalUpdateRateChecker = this.setInterval(async () => {
+      await this.updateRateChecker();
+    }, 6e4);
+    this.intervalOnlineChecker = this.setInterval(async () => {
+      await this.updateOnlineChecker();
+    }, 1e4);
   }
   /**
    * onUnload
@@ -185,6 +194,8 @@ class Shrdzm extends utils.Adapter {
   onUnload(callback) {
     try {
       this.udp4Srv && this.udp4Srv.close();
+      this.intervalUpdateRateChecker && this.clearInterval(this.intervalUpdateRateChecker);
+      this.intervalOnlineChecker && this.clearInterval(this.intervalOnlineChecker);
       callback();
     } catch {
       callback();
@@ -224,75 +235,83 @@ class Shrdzm extends utils.Adapter {
       this.log.debug(`ignoring message from device ${msgJson.id} due to filter setting`);
       return;
     }
+    const deviceId = msgJson.id;
     const ts = Date.parse(data.timestamp);
-    await this.setState(`${msgJson.id}.info.timestamp`, ts, true);
-    await this.setState(`${msgJson.id}.info.uptime`, data.uptime, true);
+    await this.setState(`${deviceId}.info.timestamp`, ts, true);
+    await this.setState(`${deviceId}.info.uptime`, data.uptime, true);
+    await this.updateRegister(deviceId);
+    const refreshEnergy = this.updateEnergy(deviceId);
+    const refreshPower = this.updatePower(deviceId);
     for (const obisCode in msgJson.data) {
       if (!obisCode.match(/\d+\.\d+\.\d+/)) {
         continue;
       }
-      await this.validateObis(msgJson.id, obisCode);
-      await this.setObisLiveState(msgJson.id, obisCode, Number(msgJson.data[obisCode]), ts);
+      await this.validateObis(deviceId, obisCode);
+      await this.setObisLiveState(deviceId, obisCode, Number(msgJson.data[obisCode]), ts);
       if ((_a = OBIS[obisCode]) == null ? void 0 : _a.histEnergy) {
-        const result = history.doEnergy(ts, obisCode, Number(msgJson.data[obisCode]));
-        await this.setObisHistoryState(msgJson.id, obisCode, "minute.curr", result.minute.curr.value, ts);
-        await this.setObisHistoryState(msgJson.id, obisCode, "quarter.curr", result.quarter.curr.value, ts);
-        await this.setObisHistoryState(msgJson.id, obisCode, "hour.curr", result.hour.curr.value, ts);
-        await this.setObisHistoryState(msgJson.id, obisCode, "day.curr", result.day.curr.value, ts);
-        if (result.minute.switched) {
-          await this.setObisHistoryState(msgJson.id, obisCode, "minute.currId", result.minute.curr.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "minute.currStart", result.minute.curr.startValue, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "minute.last", result.minute.last.value, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "minute.lastId", result.minute.last.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "minute.lastStart", result.minute.last.startValue, ts);
-        }
-        if (result.quarter.switched) {
-          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.currId", result.quarter.curr.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.currStart", result.quarter.curr.startValue, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.last", result.quarter.last.value, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.lastId", result.quarter.last.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.lastStart", result.quarter.last.startValue, ts);
-        }
-        if (result.hour.switched) {
-          await this.setObisHistoryState(msgJson.id, obisCode, "hour.currId", result.hour.curr.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "hour.currStart", result.hour.curr.startValue, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "hour.last", result.hour.last.value, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "hour.lastId", result.hour.last.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "hour.lastStart", result.hour.last.startValue, ts);
-        }
-        if (result.day.switched) {
-          await this.setObisHistoryState(msgJson.id, obisCode, "day.currId", result.day.curr.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "day.currStart", result.day.curr.startValue, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "day.last", result.day.last.value, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "day.lastId", result.day.last.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "day.lastStart", result.day.last.startValue, ts);
+        const result = history.doEnergy(ts, deviceId, obisCode, Number(msgJson.data[obisCode]));
+        if (refreshEnergy || result.minute.switched || result.quarter.switched || result.hour.switched || result.day.switched) {
+          await this.setObisHistoryState(deviceId, obisCode, "minute.curr", result.minute.curr.value, ts);
+          await this.setObisHistoryState(deviceId, obisCode, "quarter.curr", result.quarter.curr.value, ts);
+          await this.setObisHistoryState(deviceId, obisCode, "hour.curr", result.hour.curr.value, ts);
+          await this.setObisHistoryState(deviceId, obisCode, "day.curr", result.day.curr.value, ts);
+          if (result.minute.switched) {
+            await this.setObisHistoryState(deviceId, obisCode, "minute.currId", result.minute.curr.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "minute.currStart", result.minute.curr.startValue, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "minute.last", result.minute.last.value, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "minute.lastId", result.minute.last.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "minute.lastStart", result.minute.last.startValue, ts);
+          }
+          if (result.quarter.switched) {
+            await this.setObisHistoryState(deviceId, obisCode, "quarter.currId", result.quarter.curr.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "quarter.currStart", result.quarter.curr.startValue, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "quarter.last", result.quarter.last.value, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "quarter.lastId", result.quarter.last.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "quarter.lastStart", result.quarter.last.startValue, ts);
+          }
+          if (result.hour.switched) {
+            await this.setObisHistoryState(deviceId, obisCode, "hour.currId", result.hour.curr.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "hour.currStart", result.hour.curr.startValue, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "hour.last", result.hour.last.value, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "hour.lastId", result.hour.last.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "hour.lastStart", result.hour.last.startValue, ts);
+          }
+          if (result.day.switched) {
+            await this.setObisHistoryState(deviceId, obisCode, "day.currId", result.day.curr.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "day.currStart", result.day.curr.startValue, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "day.last", result.day.last.value, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "day.lastId", result.day.last.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "day.lastStart", result.day.last.startValue, ts);
+          }
         }
       }
       if ((_b = OBIS[obisCode]) == null ? void 0 : _b.histPower) {
-        const result = history.doPower(ts, obisCode, Number(msgJson.data[obisCode]));
-        await this.setObisHistoryState(msgJson.id, obisCode, "minute.curr", result.minute.curr.value, ts);
-        await this.setObisHistoryState(msgJson.id, obisCode, "quarter.curr", result.quarter.curr.value, ts);
-        await this.setObisHistoryState(msgJson.id, obisCode, "hour.curr", result.hour.curr.value, ts);
-        await this.setObisHistoryState(msgJson.id, obisCode, "day.curr", result.day.curr.value, ts);
-        if (result.minute.switched) {
-          await this.setObisHistoryState(msgJson.id, obisCode, "minute.currId", result.minute.curr.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "minute.last", result.minute.last.value, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "minute.lastId", result.minute.last.id, ts);
-        }
-        if (result.quarter.switched) {
-          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.currId", result.quarter.curr.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.last", result.quarter.last.value, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "quarter.lastId", result.quarter.last.id, ts);
-        }
-        if (result.hour.switched) {
-          await this.setObisHistoryState(msgJson.id, obisCode, "hour.currId", result.hour.curr.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "hour.last", result.hour.last.value, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "hour.lastId", result.hour.last.id, ts);
-        }
-        if (result.day.switched) {
-          await this.setObisHistoryState(msgJson.id, obisCode, "day.currId", result.day.curr.id, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "day.last", result.day.last.value, ts);
-          await this.setObisHistoryState(msgJson.id, obisCode, "day.lastId", result.day.last.id, ts);
+        const result = history.doPower(ts, deviceId, obisCode, Number(msgJson.data[obisCode]));
+        if (refreshPower || result.minute.switched || result.quarter.switched || result.hour.switched || result.day.switched) {
+          await this.setObisHistoryState(deviceId, obisCode, "minute.curr", result.minute.curr.value, ts);
+          await this.setObisHistoryState(deviceId, obisCode, "quarter.curr", result.quarter.curr.value, ts);
+          await this.setObisHistoryState(deviceId, obisCode, "hour.curr", result.hour.curr.value, ts);
+          await this.setObisHistoryState(deviceId, obisCode, "day.curr", result.day.curr.value, ts);
+          if (result.minute.switched) {
+            await this.setObisHistoryState(deviceId, obisCode, "minute.currId", result.minute.curr.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "minute.last", result.minute.last.value, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "minute.lastId", result.minute.last.id, ts);
+          }
+          if (result.quarter.switched) {
+            await this.setObisHistoryState(deviceId, obisCode, "quarter.currId", result.quarter.curr.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "quarter.last", result.quarter.last.value, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "quarter.lastId", result.quarter.last.id, ts);
+          }
+          if (result.hour.switched) {
+            await this.setObisHistoryState(deviceId, obisCode, "hour.currId", result.hour.curr.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "hour.last", result.hour.last.value, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "hour.lastId", result.hour.last.id, ts);
+          }
+          if (result.day.switched) {
+            await this.setObisHistoryState(deviceId, obisCode, "day.currId", result.day.curr.id, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "day.last", result.day.last.value, ts);
+            await this.setObisHistoryState(deviceId, obisCode, "day.lastId", result.day.last.id, ts);
+          }
         }
       }
     }
@@ -309,6 +328,12 @@ class Shrdzm extends utils.Adapter {
       this.log.error(`invalid udp port ${this.config.port} specified, must be between 1025 and 65535`);
       ok = false;
     }
+    if (!this.config.energyRate) {
+      this.config.energyRate = 15;
+    }
+    if (!this.config.powerRate) {
+      this.config.powerRate = 5;
+    }
     return ok;
   }
   /**
@@ -316,23 +341,23 @@ class Shrdzm extends utils.Adapter {
    *
    * initializes the devoce database and creates states if required
    *
-   * @param id shrzdm device id
+   * @param deviceId shrzdm device id
    */
-  async initDevice(id) {
-    this.log.silly(`initDevice( ${id} )`);
+  async initDevice(deviceId) {
+    this.log.silly(`initDevice( ${deviceId} )`);
     await this.extendObject(
-      `${id}`,
+      `${deviceId}`,
       {
         type: "device",
         common: {
-          name: id
+          name: deviceId
         },
         native: {}
       },
       { preserve: { common: ["name"] } }
     );
     await this.extendObject(
-      `${id}.info`,
+      `${deviceId}.info`,
       {
         type: "channel",
         common: {
@@ -343,7 +368,7 @@ class Shrdzm extends utils.Adapter {
       { preserve: { common: ["name"] } }
     );
     await this.extendObject(
-      `${id}.info.online`,
+      `${deviceId}.info.online`,
       {
         type: "state",
         common: {
@@ -358,7 +383,7 @@ class Shrdzm extends utils.Adapter {
       { preserve: { common: ["name"] } }
     );
     await this.extendObject(
-      `${id}.info.timestamp`,
+      `${deviceId}.info.timestamp`,
       {
         type: "state",
         common: {
@@ -373,7 +398,7 @@ class Shrdzm extends utils.Adapter {
       { preserve: { common: ["name"] } }
     );
     await this.extendObject(
-      `${id}.info.uptime`,
+      `${deviceId}.info.uptime`,
       {
         type: "state",
         common: {
@@ -388,7 +413,23 @@ class Shrdzm extends utils.Adapter {
       { preserve: { common: ["name"] } }
     );
     await this.extendObject(
-      `${id}.live`,
+      `${deviceId}.info.rate`,
+      {
+        type: "state",
+        common: {
+          name: utils.I18n.getTranslatedObject(`lblInfoRate`),
+          type: "number",
+          role: "value",
+          unit: "1/min",
+          read: true,
+          write: false
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+    await this.extendObject(
+      `${deviceId}.live`,
       {
         type: "channel",
         common: {
@@ -399,7 +440,7 @@ class Shrdzm extends utils.Adapter {
       { preserve: { common: ["name"] } }
     );
     await this.extendObject(
-      `${id}.history`,
+      `${deviceId}.history`,
       {
         type: "channel",
         common: {
@@ -409,6 +450,7 @@ class Shrdzm extends utils.Adapter {
       },
       { preserve: { common: ["name"] } }
     );
+    this.updateInit(deviceId);
   }
   /**
    * initObisState
@@ -644,6 +686,33 @@ class Shrdzm extends utils.Adapter {
     this.deviceIds[id] = true;
     return true;
   }
+  async importStatus() {
+    this.log.silly(`importStatus()`);
+    const states = await this.getStatesAsync("*");
+    for (const id in states) {
+      if (id.includes(".info.online")) {
+        await this.setState(id, false, true);
+      }
+      if (id.includes(".info.rate")) {
+        await this.setState(id, null, true);
+      }
+      if (id.includes(".info.uptime")) {
+        await this.setState(id, null, true);
+      }
+      if (id.includes(".history.")) {
+        this.log.debug(`"${id}" = "${states[id].val}`);
+        const deviceId = id.split(".")[2];
+        const obisId = id.split(".")[4];
+        const obisCode = obisId.replaceAll("_", ".");
+        const rangeId = id.split(".")[5];
+        const stateId = id.split(".")[6];
+        const value = Number(states[id].val);
+        if (!history.setCache(deviceId, obisCode, rangeId, stateId, value)) {
+          this.log.warn(`cannot initialize cache from ${id}:${states[id].val}`);
+        }
+      }
+    }
+  }
   /**
    * initUdp4Srv
    *
@@ -713,14 +782,67 @@ ${err.stack}`);
   /**
    * onUdpSrvListening
    *
-   * is cllaed as soon as server starts listening
+   * is called as soon as server starts listening
    */
   async onUdp4SrvListening() {
+    this.log.silly(`onUdp4SrvListening()`);
     if (this.udp4Srv) {
       const address = this.udp4Srv.address();
-      this.log.info(`server listening ${address.address}:${address.port}`);
+      this.log.info(`server listening at ${address.address}:${address.port}`);
       this.udp4SrvRetry = 12 * 60;
       await this.setState("info.connection", true, true);
+    }
+  }
+  updateCache = {};
+  updateInit(deviceId) {
+    this.log.silly(`updateInit(${deviceId})`);
+    this.updateCache[deviceId] = {
+      count: 0,
+      online: false,
+      energyCnt: 0,
+      powerCnt: 0
+    };
+  }
+  async updateRegister(deviceId) {
+    this.log.silly(`updateRegister(${deviceId})`);
+    this.updateCache[deviceId].count++;
+    this.updateCache[deviceId].online = true;
+    this.updateCache[deviceId].energyCnt++;
+    this.updateCache[deviceId].powerCnt++;
+    if (this.updateCache[deviceId].count === 1) {
+      await this.setState(`${deviceId}.info.online`, true, true);
+    }
+  }
+  updateEnergy(deviceId) {
+    this.log.silly(`updateEnergy(${deviceId})`);
+    if (this.updateCache[deviceId].energyCnt >= this.config.energyRate) {
+      this.updateCache[deviceId].energyCnt = 0;
+      return true;
+    }
+    return false;
+  }
+  updatePower(deviceId) {
+    this.log.silly(`updatePower(${deviceId})`);
+    if (this.updateCache[deviceId].powerCnt >= this.config.powerRate) {
+      this.updateCache[deviceId].powerCnt = 0;
+      return true;
+    }
+    return false;
+  }
+  async updateRateChecker() {
+    this.log.silly(`updateRateChecker())`);
+    for (const deviceId in this.updateCache) {
+      await this.setState(`${deviceId}.info.rate`, this.updateCache[deviceId].count, true);
+      this.updateCache[deviceId].count = 0;
+    }
+  }
+  async updateOnlineChecker() {
+    this.log.silly(`updateOnlineChecker())`);
+    for (const deviceId in this.updateCache) {
+      if (!this.updateCache[deviceId].online) {
+        await this.setState(`${deviceId}.info.online`, false, true);
+      }
+      this.updateCache[deviceId].online = false;
     }
   }
 }

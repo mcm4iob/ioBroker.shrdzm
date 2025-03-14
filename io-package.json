@@ -122,7 +122,7 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=6.0.11"
+        "js-controller": ">=7.0.6"
       }
     ],
     "globalDependencies": [
@@ -136,7 +136,9 @@
     "devices": "",
     "udpFwdEnable": false,
     "udpFwdAddress": "",
-    "udpFwdPort": 0
+    "udpFwdPort": 0,
+    "energyRate": 15,
+    "powerRate": 5
   },
   "objects": [],
   "instanceObjects": [
