@@ -122,7 +122,7 @@
       "zh-cn": "Integrate the SHRDZM smartmater interface into ioBroker"
     },
     "authors": [
-      "Martin M. <mcm57@gmx.at>"
+      "mcm1957 <mcm57@gmx.at>"
     ],
     "keywords": [
       "smartmeter shrdzm"

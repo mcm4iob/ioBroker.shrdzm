@@ -6,14 +6,14 @@
     "name": "Martin M.",
     "email": "mcm57@gmx.at"
   },
-  "homepage": "https://github.com/mcm1957/ioBroker.shrdzm",
+  "homepage": "https://github.com/mcm4iob/ioBroker.shrdzm",
   "license": "MIT",
   "keywords": [
     "smartmeter shrdzm"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mcm1957/ioBroker.shrdzm.git"
+    "url": "https://github.com/mcm4iob/ioBroker.shrdzm.git"
   },
   "engines": {
     "node": ">= 20"
@@ -75,7 +75,7 @@
     "release": "release-script"
   },
   "bugs": {
-    "url": "https://github.com/mcm1957/ioBroker.shrdzm/issues"
+    "url": "https://github.com/mcm4iob/ioBroker.shrdzm/issues"
   },
   "readmeFilename": "README.md"
 }
