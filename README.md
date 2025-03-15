@@ -71,7 +71,7 @@ Updates of live data are performed whenever new is recieved from SHRDZM device. 
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### 0.0.1-alpha.5 (2025-03-14)
+### **WORK IN PROGRESS**
 * (mcm1957) initial release
 
 ## License
