@@ -52,6 +52,12 @@ The SHRDZM device shoul start to send data immeidiatly at the intervall configur
 
 The adapter will create states for all obos data received from all devices. If you have multipleSHRZDM devices installed and want to limit the devices accepted, you can enter a list of allowed devices into the configuration of the adapter. If no devices are configured, data from all senders will be accepted.
 
+## FAQ
+
+### Updates occure too often
+
+Updates of live data are performed whenever new is recieved from SHRDZM device. To reduce the amount of data sent by the device adjust the interval paramater at "settings" page of the device.
+
 **************************************************************************************************************
 
 **If you like it, please consider a donation:**
