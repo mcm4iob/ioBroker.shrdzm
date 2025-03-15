@@ -162,6 +162,7 @@ class Shrdzm extends utils.Adapter {
 
     private intervalOnlineChecker: ioBroker.Interval | undefined;
     private intervalUpdateRateChecker: ioBroker.Interval | undefined;
+    private retryTimeout: ioBroker.Timeout | undefined;
 
     public constructor(options: Partial<utils.AdapterOptions> = {}) {
         super({
@@ -218,6 +219,7 @@ class Shrdzm extends utils.Adapter {
 
             this.intervalUpdateRateChecker && this.clearInterval(this.intervalUpdateRateChecker);
             this.intervalOnlineChecker && this.clearInterval(this.intervalOnlineChecker);
+            this.retryTimeout && this.clearTimeout(this.retryTimeout);
 
             callback();
         } catch {
@@ -879,7 +881,7 @@ class Shrdzm extends utils.Adapter {
 
         if (this.udp4SrvRetry--) {
             this.log.info(`trying to restablish udp connection in 5s`);
-            this.setTimeout(this.initUdp4Srv, 5 * 1000);
+            this.retryTimeout = this.setTimeout(this.initUdp4Srv, 5 * 1000);
         } else {
             this.log.error(`maximum number of retries exceeded`);
         }
