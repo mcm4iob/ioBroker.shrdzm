@@ -1,131 +1,55 @@
 {
   "common": {
     "name": "shrdzm",
-    "version": "0.0.1-alpha.5",
+    "version": "0.1.0",
     "news": {
-      "0.0.1-alpha.5": {
-        "en": "initial release",
-        "de": "erstausstrahlung",
-        "ru": "первоначальное освобождение",
-        "pt": "lançamento inicial",
-        "nl": "eerste release",
-        "fr": "libération initiale",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "początkowe zwolnienie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.1-alpha.4": {
-        "en": "initial release",
-        "de": "erstausstrahlung",
-        "ru": "первоначальное освобождение",
-        "pt": "lançamento inicial",
-        "nl": "eerste release",
-        "fr": "libération initiale",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "początkowe zwolnienie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.1-alpha.3": {
-        "en": "initial release",
-        "de": "erstausstrahlung",
-        "ru": "первоначальное освобождение",
-        "pt": "lançamento inicial",
-        "nl": "eerste release",
-        "fr": "libération initiale",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "początkowe zwolnienie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.1-alpha.2": {
-        "en": "initial release",
-        "de": "erstausstrahlung",
-        "ru": "первоначальное освобождение",
-        "pt": "lançamento inicial",
-        "nl": "eerste release",
-        "fr": "libération initiale",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "początkowe zwolnienie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.1-alpha.1": {
-        "en": "initial release",
-        "de": "erstausstrahlung",
-        "ru": "первоначальное освобождение",
-        "pt": "lançamento inicial",
-        "nl": "eerste release",
-        "fr": "libération initiale",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "początkowe zwolnienie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.1-alpha.0": {
-        "en": "initial release",
-        "de": "erstausstrahlung",
-        "ru": "первоначальное освобождение",
-        "pt": "lançamento inicial",
-        "nl": "eerste release",
-        "fr": "libération initiale",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "początkowe zwolnienie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.1": {
+      "0.1.0": {
         "en": "initial release",
         "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
+        "ru": "первоначальное освобождение",
         "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "uk": "Початкова версія",
-        "zh-cn": "首次出版"
+        "nl": "eerste release",
+        "fr": "libération initiale",
+        "it": "rilascio iniziale",
+        "es": "liberación inicial",
+        "pl": "początkowe zwolnienie",
+        "uk": "початковий реліз",
+        "zh-cn": "初步释放"
       }
     },
     "titleLang": {
-      "en": "SHRDZM Smartmerter Interface",
-      "de": "SHRDZM Smartmerter Interface",
-      "ru": "SHRDZM Smartmerter Interface",
-      "pt": "SHRDZM Smartmerter Interface",
-      "nl": "SHRDZM Smartmerter Interface",
-      "fr": "SHRDZM Smartmerter Interface",
-      "it": "SHRDZM Smartmerter Interface",
-      "es": "SHRDZM Smartmerter Interface",
-      "pl": "SHRDZM Smartmerter Interface",
-      "uk": "SHRDZM Smartmerter Interface",
-      "zh-cn": "SHRDZM Smartmerter Interface"
+      "en": "SHRDZM Smartmeter Interface",
+      "de": "SHRDZM Smartmeter-Schnittstelle",
+      "ru": "Интерфейс смарт-счетчика SHRDZM",
+      "pt": "Interface de medidor inteligente SHRDZM",
+      "nl": "SHRDZM Smartmeter-interface",
+      "fr": "Interface de compteur intelligent SHRDZM",
+      "it": "Interfaccia del contatore intelligente SHRDZM",
+      "es": "Interfaz de medidor inteligente SHRDZM",
+      "pl": "Interfejs inteligentnego licznika SHRDZM",
+      "uk": "Інтерфейс SHRDZM Smartmeter",
+      "zh-cn": "SHRDZM智能电表接口"
     },
     "desc": {
-      "en": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "de": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "ru": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "pt": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "nl": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "fr": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "it": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "es": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "pl": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "uk": "Integrate the SHRDZM smartmater interface into ioBroker",
-      "zh-cn": "Integrate the SHRDZM smartmater interface into ioBroker"
+      "en": "Integrate the SHRDZM smartmeter interface into ioBroker",
+      "de": "Integrieren Sie die SHRDZM-Smartmeter-Schnittstelle in ioBroker",
+      "ru": "Интеграция интерфейса смарт-счетчика SHRDZM в ioBroker",
+      "pt": "Integrar a interface do smartmeter SHRDZM no ioBroker",
+      "nl": "Integreer de SHRDZM smartmeter-interface in ioBroker",
+      "fr": "Intégrer l'interface du compteur intelligent SHRDZM dans ioBroker",
+      "it": "Integrare l'interfaccia dello smartmeter SHRDZM in ioBroker",
+      "es": "Integre la interfaz del medidor inteligente SHRDZM en ioBroker",
+      "pl": "Zintegruj interfejs inteligentnego licznika SHRDZM z ioBroker",
+      "uk": "Інтегруйте інтерфейс смартметра SHRDZM в ioBroker",
+      "zh-cn": "将 SHRDZM 智能电表接口集成到 ioBroker"
     },
     "authors": [
       "mcm1957 <mcm57@gmx.at>"
     ],
     "keywords": [
-      "smartmeter shrdzm"
+      "ioBroker",
+      "smartmeter",
+      "shrdzm"
     ],
     "licenseInformation": {
       "type": "free",

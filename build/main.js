@@ -151,6 +151,7 @@ class Shrdzm extends utils.Adapter {
   udp4SrvRetry = 10;
   intervalOnlineChecker;
   intervalUpdateRateChecker;
+  retryTimeout;
   constructor(options = {}) {
     super({
       ...options,
@@ -196,6 +197,7 @@ class Shrdzm extends utils.Adapter {
       this.udp4Srv && this.udp4Srv.close();
       this.intervalUpdateRateChecker && this.clearInterval(this.intervalUpdateRateChecker);
       this.intervalOnlineChecker && this.clearInterval(this.intervalOnlineChecker);
+      this.retryTimeout && this.clearTimeout(this.retryTimeout);
       callback();
     } catch {
       callback();
@@ -751,7 +753,7 @@ ${err.stack}`);
     await this.setState("info.connection", false, true);
     if (this.udp4SrvRetry--) {
       this.log.info(`trying to restablish udp connection in 5s`);
-      this.setTimeout(this.initUdp4Srv, 5 * 1e3);
+      this.retryTimeout = this.setTimeout(this.initUdp4Srv, 5 * 1e3);
     } else {
       this.log.error(`maximum number of retries exceeded`);
     }
