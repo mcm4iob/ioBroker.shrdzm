@@ -54,7 +54,7 @@ The adapter will create states for all obos data received from all devices. If y
 
 ## FAQ
 
-### Updates occure too often
+#### Updates occure too often
 
 Updates of live data are performed whenever new is recieved from SHRDZM device. To reduce the amount of data sent by the device adjust the interval paramater at "settings" page of the device.
 
