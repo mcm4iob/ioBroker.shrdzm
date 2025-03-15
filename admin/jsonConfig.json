@@ -114,10 +114,10 @@
                     "hidden": "!data.udpFwdEnable",
                     "expertMode": true,
                     "default": "",
-                    "xs": 8,
-                    "sm": 8,
-                    "md": 6,
-                    "lg": 4,
+                    "xs": 12,
+                    "sm": 10,
+                    "md": 8,
+                    "lg": 6,
                     "xl": 4
                 },
                 "udpFwdPort": {
@@ -129,10 +129,10 @@
                     "default": 9000,
                     "min": 1,
                     "max": 65535,
-                    "xs": 4,
-                    "sm": 4,
-                    "md": 3,
-                    "lg": 2,
+                    "xs": 12,
+                    "sm": 10,
+                    "md": 6,
+                    "lg": 4,
                     "xl": 2
                 }                
             }
