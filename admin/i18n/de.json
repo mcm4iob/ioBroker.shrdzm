@@ -1,15 +1,14 @@
 {
-    "option2": "option2",
     "shrdzm adapter settings": "Adaptereinstellungen für shrdzm",
-    "lblPort": "Hafen",
+    "lblPort": "Port",
     "lblDevices": "Geräte",
-    "lblUdpFwdEnable": "Aktivieren Sie die UDP -Weiterleitung",
+    "lblUdpFwdEnable": "UDP -Weiterleitung aktivieren",
     "lblUdpFwdAddress": "UDP -Weiterleitungsadresse",
-    "lblUdpFwdPort": "UDP -Weiterleitungsanschluss",
+    "lblUdpFwdPort": "UDP -Weiterleitungsport",
     "lblStdConfig": "Konfiguration",
     "lblExpertConfig": "Erweiterte Konfiguration",
     "lblHdr_1": "Allgemeines Setup",
     "lblHdr_2": "Verarbeitungsoptionen",
-    "lblEnergyRate": "Update-Rate für EnergyInformation",
-    "lblPowerRate": "Update-Rate für PowerInformation"
+    "lblEnergyRate": "Update-Rate für Energie-Information",
+    "lblPowerRate": "Update-Rate für Leistungs-Informationen"
 }
