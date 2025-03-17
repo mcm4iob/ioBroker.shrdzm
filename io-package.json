@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "shrdzm",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "news": {
+      "0.1.1": {
+        "en": "translations have been reviewed and fixed",
+        "de": "Übersetzungen wurden überprüft und korrigiert",
+        "ru": "переводы были пересмотрены и исправлены",
+        "pt": "traduções foram revisadas e corrigidas",
+        "nl": "vertalingen zijn herzien en vastgesteld",
+        "fr": "les traductions ont été revues et corrigées",
+        "it": "traduzioni sono state riesaminate e fisse",
+        "es": "traducciones se han revisado y fijo",
+        "pl": "tłumaczenia zostały poddane przeglądowi i ustalone",
+        "uk": "переклади були розглянуті і виправлені",
+        "zh-cn": "翻译已审查并固定"
+      },
       "0.1.0": {
         "en": "initial release",
         "de": "Erstveröffentlichung",
