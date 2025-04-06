@@ -9,7 +9,9 @@
   "homepage": "https://github.com/mcm4iob/ioBroker.shrdzm",
   "license": "MIT",
   "keywords": [
-    "smartmeter shrdzm"
+    "ioBroker",
+    "smartmeter",
+    "shrdzm"
   ],
   "repository": {
     "type": "git",
