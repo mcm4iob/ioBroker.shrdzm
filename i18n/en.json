@@ -38,7 +38,7 @@
     "lblLive": "live data",
     "desclblLive": "live data received from unit",
     "lblHistory": "historical data",
-    "descHistory": "data avaraged over specified time interval",
+    "descHistory": "data averaged over specified time interval",
     "lblCurr": "current value",
     "descCurr": "value of current interval",
     "lblLast": "last value",
