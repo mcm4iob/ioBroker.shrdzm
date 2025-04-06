@@ -164,7 +164,7 @@ const OBIS: {
     '16.7.0': {
         // Momentleistung (saldiert) in kW
         name: 'lblPower',
-        desc: 'lblPower',
+        desc: 'descPower',
         role: 'value.power',
         unit: 'W',
         histEnergy: false,
