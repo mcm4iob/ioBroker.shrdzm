@@ -16,6 +16,6 @@
     "lblInfoDevices": "If you want to listen to a dedicated list of devices, please enter the ids of the devices. If you leave the input field empty, the adapter listens to all devices sending data.",
     "lblInfoRates": "Normally the device transmits data at high frequency. 'live' data is always stored immidiatly. To reduce system load you can reduce the number of samples used for historic data. If selecting 1:10 only every 10th sample will be processed for history data calculation.", 
     "lblInfoRawData": "Selecting to store raw data will allow analyzing data transmitted from devices but add additional load to system due to frequent updates to state.",
-    "lblInfoUdpForwarding": "This adapter allows to forward every UDP packet received from devices to another destination. Please specify ip-address and prot to forward data to.",
+    "lblInfoUdpForwarding": "This adapter allows to forward every UDP packet received from devices to another destination. Please specify ip-address and port to forward data to.",
     "lblDonate":"If you like this project and would like to support its development, you are welcome to leave a donation."
 }
