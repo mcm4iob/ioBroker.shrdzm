@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "shrdzm",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "news": {
+      "0.2.0": {
+        "en": "Online indicator has been added to objectview.\nTranslations have been updated.\nDescriptions have been added to all states and at adminUI.\nRaw data received from devices can be stored for analyses now.\nAdapter can handle multiple networks now. \nDependencies have been updated.",
+        "de": "Der Online-Indikator wurde zur Objektansicht hinzugefügt.\nÜbersetzungen wurden aktualisiert.\nBeschreibungen wurden zu allen Datenpunkten und im AdminUI hinzugefügt.\nVon Geräten empfangene Rohdaten können jetzt für Analysen gespeichert werden.\nAdapter kann jetzt mehrere Netzwerke verwalten.\nAbhängigkeiten wurden aktualisiert.",
+        "ru": "Онлайн-индикатор добавлен к объектному просмотру.\nПереводы были обновлены.\nОписания были добавлены во все государства и в adminUI.\nСырые данные, полученные с устройств, теперь могут храниться для анализа.\nАдаптер теперь может работать с несколькими сетями.\nЗависимости были обновлены.",
+        "pt": "Indicador on-line foi adicionado a objectview.\nAs traduções foram atualizadas.\nAs descrições foram adicionadas a todos os estados e em adminUI.\nOs dados brutos recebidos de dispositivos podem ser armazenados para análises agora.\nAdaptador pode lidar com várias redes agora.\nAs dependências foram atualizadas.",
+        "nl": "Online indicator is toegevoegd aan objectview.\nDe vertalingen zijn bijgewerkt.\nBeschrijvingen zijn toegevoegd aan alle staten en bij adminUI.\nVan apparaten ontvangen ruwe gegevens kunnen nu worden opgeslagen voor analyses.\nAdapter kan nu meerdere netwerken aan.\nAfhankelijkheden zijn bijgewerkt.",
+        "fr": "L'indicateur en ligne a été ajouté à objectview.\nLes traductions ont été mises à jour.\nDes descriptions ont été ajoutées à tous les états et à adminUI.\nLes données brutes reçues des appareils peuvent maintenant être stockées pour analyse.\nAdaptateur peut gérer plusieurs réseaux maintenant.\nLes dépendances ont été actualisées.",
+        "it": "Indicatore online è stato aggiunto a Objectview.\nLe traduzioni sono state aggiornate.\nLe descrizioni sono state aggiunte a tutti gli stati e ad adminUI.\nI dati grezzi ricevuti dai dispositivi possono essere memorizzati per le analisi ora.\nL'adattatore può gestire più reti ora.\nLe dipendenze sono state aggiornate.",
+        "es": "Se ha añadido un indicador en línea a la vista de objetos.\nSe han actualizado las traducciones.\nSe han añadido descripciones a todos los estados y a adminUI.\nLos datos brutos recibidos de los dispositivos se pueden almacenar para los análisis ahora.\nAdaptador puede manejar múltiples redes ahora.\nSe han actualizado las dependencias.",
+        "pl": "Wskaźnik online został dodany do widoku obiektów.\nTłumaczenia zostały zaktualizowane.\nOpisy zostały dodane do wszystkich państw i w administracji.\nSurowe dane otrzymane z urządzeń mogą być przechowywane do analiz.\nAdapter może teraz obsługiwać wiele sieci.\nZaktualizowano zależność.",
+        "uk": "Онлайн індикатор додано до перегляду об'єктів.\nОновлено переклади.\nОписи додано в усі держави і в адмінУІ.\nСирі дані, отримані з пристроїв, можуть зберігатися для аналізу.\nАдаптер може обробляти декілька мереж.\nОновлено залежність.",
+        "zh-cn": "在对象视图中添加了在线指标 .\n翻译已经更新.\n各州和行政部门都增加了说明.\n从设备收到的原始数据现在可以储存起来进行分析.\n适配器现在可以处理多个网络.\n附属关系已经更新."
+      },
       "0.1.1": {
         "en": "translations have been reviewed and fixed",
         "de": "Übersetzungen wurden überprüft und korrigiert",

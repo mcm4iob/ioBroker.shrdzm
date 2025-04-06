@@ -71,7 +71,7 @@ Updates of live data are performed whenever new is recieved from SHRDZM device. 
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.2.0 (2025-04-06)
 * (mcm1957) Online indicator has been added to objectview.
 * (mcm1957) Translations have been updated.
 * (mcm1957) Descriptions have been added to all states and at adminUI.
