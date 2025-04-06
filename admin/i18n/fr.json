@@ -10,5 +10,6 @@
     "lblHdr_1": "Configuration générale",
     "lblHdr_2": "Options de traitement",
     "lblEnergyRate": "Taux de mise à jour pour l'énergie",
-    "lblPowerRate": "Taux de mise à jour pour PowerInformation"
+    "lblPowerRate": "Taux de mise à jour pour PowerInformation",
+    "lblStoreRawData": "Stocker les données brutes reçues de l'appareil"
 }

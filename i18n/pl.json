@@ -58,5 +58,10 @@
     "lblHour": "1 godzina",
     "descHour": "Dane podsumowane w odstępie 1 godziny",
     "lblDay": "1 dzień",
-    "descDay": "Dane podsumowane w odstępie 1 dnia"
+    "descDay": "Dane podsumowane w odstępie 1 dnia",
+    "lblInfoRate": "Szybkość aktualizacji",
+    "descInfoRate": "Liczba aktualizacji otrzymanych z urządzenia na minutę",
+    "descDevice": "urządzenie przesyłające dane",
+    "lblRaw": "surowe dane",
+    "descRaw": "Surowe dane otrzymane z urządzenia"
 }

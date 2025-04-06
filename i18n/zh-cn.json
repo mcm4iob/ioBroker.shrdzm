@@ -58,5 +58,10 @@
     "lblHour": "1小时",
     "descHour": "数据概括了1小时的间隔",
     "lblDay": "1天",
-    "descDay": "数据汇总在1天的间隔"
+    "descDay": "数据汇总在1天的间隔",
+    "lblInfoRate": "更新率",
+    "descInfoRate": "每分钟从设备收到的更新数量",
+    "descDevice": "设备传输数据",
+    "lblRaw": "原始数据",
+    "descRaw": "从设备收到的原始数据"
 }

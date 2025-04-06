@@ -58,5 +58,10 @@
     "lblHour": "1 hora",
     "descHour": "dados resumidos em um intervalo de 1 hora",
     "lblDay": "1 dia",
-    "descDay": "dados resumidos em um intervalo de 1 dia"
+    "descDay": "dados resumidos em um intervalo de 1 dia",
+    "lblInfoRate": "taxa de atualização",
+    "descInfoRate": "Número de atualizações recebidas do dispositivo por minuto",
+    "descDevice": "Dados de transmissão do dispositivo",
+    "lblRaw": "dados brutos",
+    "descRaw": "dados brutos recebidos do dispositivo"
 }

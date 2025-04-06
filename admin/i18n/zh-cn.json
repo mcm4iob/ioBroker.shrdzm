@@ -10,5 +10,6 @@
     "lblHdr_1": "一般设置",
     "lblHdr_2": "处理选项",
     "lblEnergyRate": "能源信息的更新率",
-    "lblPowerRate": "更新速率用于功率信息"
+    "lblPowerRate": "更新速率用于功率信息",
+    "lblStoreRawData": "存储从设备收到的原始数据"
 }

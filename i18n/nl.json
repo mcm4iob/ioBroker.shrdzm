@@ -58,5 +58,10 @@
     "lblHour": "1 uur",
     "descHour": "Gegevens samengevat over een interval van 1 uur",
     "lblDay": "1 dag",
-    "descDay": "Gegevens samengevat over een interval van 1 dag"
+    "descDay": "Gegevens samengevat over een interval van 1 dag",
+    "lblInfoRate": "update -snelheid",
+    "descInfoRate": "Aantal updates ontvangen van apparaat per minuut",
+    "descDevice": "apparaat dat gegevens verzendt",
+    "lblRaw": "onbewerkte gegevens",
+    "descRaw": "onbewerkte gegevens ontvangen van apparaat"
 }

@@ -58,5 +58,10 @@
     "lblHour": "1 Stunde",
     "descHour": "Daten über ein Intervall von 1 Stunde zusammengefasst",
     "lblDay": "1 Tag",
-    "descDay": "Daten, die über ein Intervall von 1 Tag zusammengefasst sind"
+    "descDay": "Daten, die über ein Intervall von 1 Tag zusammengefasst sind",
+    "lblInfoRate": "Aktualisierungsrate",
+    "descInfoRate": "Anzahl der vom Gerät pro Minute empfangenen Aktualisierungen",
+    "descDevice": "Geräte übersenden Daten",
+    "lblRaw": "Rohdaten",
+    "descRaw": "Rohdaten vom Gerät empfangen"
 }

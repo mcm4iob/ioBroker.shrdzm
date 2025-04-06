@@ -10,5 +10,6 @@
     "lblHdr_1": "Configuración general",
     "lblHdr_2": "Opciones de procesamiento",
     "lblEnergyRate": "Tasa de actualización para EnergyInformation",
-    "lblPowerRate": "Tasa de actualización para PowerInformation"
+    "lblPowerRate": "Tasa de actualización para PowerInformation",
+    "lblStoreRawData": "Almacenar datos sin procesar recibidos del dispositivo"
 }

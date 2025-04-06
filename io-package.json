@@ -102,7 +102,7 @@
     "udpFwdPort": 0,
     "energyRate": 15,
     "powerRate": 5,
-    "storeRawData":false
+    "storeRawData": false
   },
   "objects": [],
   "instanceObjects": [

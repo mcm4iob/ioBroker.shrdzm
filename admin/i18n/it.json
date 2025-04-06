@@ -10,5 +10,6 @@
     "lblHdr_1": "Setup generale",
     "lblHdr_2": "Opzioni di elaborazione",
     "lblEnergyRate": "Rate di aggiornamento per EnergyEnformation",
-    "lblPowerRate": "Rate di aggiornamento per PowerInformation"
+    "lblPowerRate": "Rate di aggiornamento per PowerInformation",
+    "lblStoreRawData": "Memorizzare i dati grezzi ricevuti dal dispositivo"
 }

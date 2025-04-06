@@ -10,5 +10,6 @@
     "lblHdr_1": "Ogólna konfiguracja",
     "lblHdr_2": "Opcje przetwarzania",
     "lblEnergyRate": "Aktualizacja stawki dla energyinformacji",
-    "lblPowerRate": "Aktualizacja stawki do powerinformacji"
+    "lblPowerRate": "Aktualizacja stawki do powerinformacji",
+    "lblStoreRawData": "Przechowuj surowe dane otrzymane z urządzenia"
 }

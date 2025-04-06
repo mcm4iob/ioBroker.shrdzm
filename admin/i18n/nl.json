@@ -10,5 +10,6 @@
     "lblHdr_1": "Algemene opstelling",
     "lblHdr_2": "Verwerkingsopties",
     "lblEnergyRate": "UPDATRATE VOOR ENERGY INFORMATIE",
-    "lblPowerRate": "UPDATE-rate voor PowerInformation"
+    "lblPowerRate": "UPDATE-rate voor PowerInformation",
+    "lblStoreRawData": "Bewaar onbewerkte gegevens die zijn ontvangen van apparaat"
 }

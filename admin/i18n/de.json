@@ -10,5 +10,6 @@
     "lblHdr_1": "Allgemeines Setup",
     "lblHdr_2": "Verarbeitungsoptionen",
     "lblEnergyRate": "Update-Rate für Energie-Information",
-    "lblPowerRate": "Update-Rate für Leistungs-Informationen"
+    "lblPowerRate": "Update-Rate für Leistungs-Informationen",
+    "lblStoreRawData": "Speichern Sie Rohdaten, die vom Gerät empfangen werden"
 }
