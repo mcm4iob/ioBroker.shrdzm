@@ -1,21 +1,21 @@
 {
-    "shrdzm adapter settings": "Adapter settings for shrdzm",
+    "shrdzm adapter settings": "Adapter settings for SHRDZM",
     "lblPort": "Port",
     "lblDevices": "Devices",
     "lblUdpFwdEnable": "Enable UDP forwarding",
     "lblUdpFwdAddress": "UDP forwarding address",
     "lblUdpFwdPort": "UDP forwarding port",
-    "lblStdConfig":"Configuration",
-    "lblExpertConfig":"Extended Configuration",
+    "lblStdConfig": "Configuration",
+    "lblExpertConfig": "Extended Configuration",
     "lblHdr_1": "General Setup",
     "lblHdr_2": "Processing Options",
     "lblEnergyRate": "Update-Rate for Energyinformation",
     "lblPowerRate": "Update-Rate for Powerinformation",
     "lblStoreRawData": "Store raw data received from device",
-    "lblInfoBinding": "Please specify at which ip address / network and which port this adapter should listen for messages sent by devices. Dafault is to listen on all available networks (0.0.0.0) and port 9000.",
-    "lblInfoDevices": "If you want to listen to a dedicated list of devices, please enter the ids of the devices. If you leave the input field empty, the adapter listens to all devices sending data.",
-    "lblInfoRates": "Normally the device transmits data at high frequency. 'live' data is always stored immidiatly. To reduce system load you can reduce the number of samples used for historic data. If selecting 1:10 only every 10th sample will be processed for history data calculation.", 
+    "lblInfoBinding": "Please specify at which ip address / network and at which port this adapter should listen for messages sent by devices. Default is to listen on all available networks (0.0.0.0) and port 9000.",
+    "lblInfoDevices": "To listen to a dedicated list of devices only, enter the ids of those devices. If the input field is empty, the adapter listens to all devices sending data.",
+    "lblInfoRates": "Normally the device transmits data at high frequency. 'live' data is always stored immidiatly. To reduce system load you can reduce the number of samples used for historic data. If selecting 1:10 only every 10th sample will be processed for history data calculation.",
     "lblInfoRawData": "Selecting to store raw data will allow analyzing data transmitted from devices but add additional load to system due to frequent updates to state.",
     "lblInfoUdpForwarding": "This adapter allows to forward every UDP packet received from devices to another destination. Please specify ip-address and port to forward data to.",
-    "lblDonate":"If you like this project and would like to support its development, you are welcome to leave a donation."
+    "lblDonate": "If you like this project and would like to support its development, you are welcome to leave a donation."
 }
