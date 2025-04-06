@@ -71,6 +71,13 @@ Updates of live data are performed whenever new is recieved from SHRDZM device. 
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* (mcm1957) Translations have been updated.
+* (mcm1957) Descriptions have been added to all states and at adminUI.
+* (mcm1957) Raw data received from devices can be stored for analyses now.
+* (mcm1957) Adapter can handle multiple networks now. 
+* (mcm1957) Dependencies have been updated.
+
 ### 0.1.1 (2025-03-17)
 * (mcm1957) translations have been reviewed and fixed
 

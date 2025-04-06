@@ -445,7 +445,7 @@ class Shrdzm extends utils.Adapter {
                     name: deviceId,
                     desc: utils.I18n.getTranslatedObject(`descDevice`),
                     statusStates: {
-                        onlineId: `${deviceId}.info.online`,
+                        onlineId: `${this.name}.${this.instance}.${deviceId}.info.online`,
                     },
                 },
                 native: {},
