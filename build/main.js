@@ -520,7 +520,9 @@ class Shrdzm extends utils.Adapter {
             desc: utils.I18n.getTranslatedObject(OBIS[obis].desc),
             type: "number",
             role: OBIS[obis].role,
-            unit: OBIS[obis].unit
+            unit: OBIS[obis].unit,
+            read: true,
+            write: false
           },
           native: {}
         },
@@ -560,7 +562,9 @@ class Shrdzm extends utils.Adapter {
                 name: utils.I18n.getTranslatedObject(`lblCurrId`),
                 desc: utils.I18n.getTranslatedObject(`descCurrId`),
                 type: "number",
-                role: "value"
+                role: "value",
+                read: true,
+                write: false
               },
               native: {}
             },
@@ -574,7 +578,9 @@ class Shrdzm extends utils.Adapter {
                 name: utils.I18n.getTranslatedObject(`lblLastId`),
                 desc: utils.I18n.getTranslatedObject(`descLastId`),
                 type: "number",
-                role: "value"
+                role: "value",
+                read: true,
+                write: false
               },
               native: {}
             },
@@ -589,7 +595,9 @@ class Shrdzm extends utils.Adapter {
                 desc: utils.I18n.getTranslatedObject(`descCurr`),
                 type: "number",
                 role: OBIS[obis].role,
-                unit: OBIS[obis].unit
+                unit: OBIS[obis].unit,
+                read: true,
+                write: false
               },
               native: {}
             },
@@ -604,7 +612,9 @@ class Shrdzm extends utils.Adapter {
                 desc: utils.I18n.getTranslatedObject(`descLast`),
                 type: "number",
                 role: OBIS[obis].role,
-                unit: OBIS[obis].unit
+                unit: OBIS[obis].unit,
+                read: true,
+                write: false
               },
               native: {}
             },
@@ -620,7 +630,9 @@ class Shrdzm extends utils.Adapter {
                   desc: utils.I18n.getTranslatedObject(`descCurrStart`),
                   type: "number",
                   role: OBIS[obis].role,
-                  unit: OBIS[obis].unit
+                  unit: OBIS[obis].unit,
+                  read: true,
+                  write: false
                 },
                 native: {}
               },
@@ -635,7 +647,9 @@ class Shrdzm extends utils.Adapter {
                   desc: utils.I18n.getTranslatedObject(`descLastStart`),
                   type: "number",
                   role: OBIS[obis].role,
-                  unit: OBIS[obis].unit
+                  unit: OBIS[obis].unit,
+                  read: true,
+                  write: false
                 },
                 native: {}
               },
@@ -653,7 +667,9 @@ class Shrdzm extends utils.Adapter {
             name: `OBIS-${obisId}`,
             type: "number",
             role: "value",
-            unit: ""
+            unit: "",
+            read: true,
+            write: false
           },
           native: {}
         },
