@@ -28,6 +28,7 @@ const OBIS = {
   "1.6.0": {
     // Viertelstundenmaximum (Bezug) in kW
     name: "lblPeakActivePowerConsumed",
+    desc: "descPeakActivePowerConsumed",
     role: "value.power.consumed",
     unit: "W",
     histEnergy: false,
@@ -36,6 +37,7 @@ const OBIS = {
   "2.6.0": {
     // Viertelstundenmaximum (Einspeisung) in kW
     name: "lblPeakActivePowerProduced",
+    desc: "descPeakActivePowerProduced",
     role: "value.power.produced",
     unit: "Wh",
     histEnergy: false,
@@ -44,6 +46,7 @@ const OBIS = {
   "1.7.0": {
     // Momentanleistung (Bezug) in kW
     name: "lblActivePowerConsumed",
+    desc: "descActivePowerConsumed",
     role: "value.power.consumed",
     unit: "W",
     histEnergy: false,
@@ -52,6 +55,7 @@ const OBIS = {
   "2.7.0": {
     // Momentanleistung (Einspeisung) in kW
     name: "lblActivePowerProduced",
+    desc: "descActivePowerProduced",
     role: "value.power.produced",
     unit: "W",
     histEnergy: false,
@@ -60,6 +64,7 @@ const OBIS = {
   "3.7.0": {
     // Momentanblindleistung (Bezug) in kVar
     name: "lblReactivePowerConsumed",
+    desc: "descReactivePowerConsumed",
     role: "value.power.reactive",
     unit: "Var",
     histEnergy: false,
@@ -68,6 +73,7 @@ const OBIS = {
   "4.7.0": {
     // Momentanblindleistung (Einspeisung) in kVar
     name: "lblReactivePowerProduced",
+    desc: "descReactivePowerProduced",
     role: "value.power.reactive",
     unit: "Var",
     histEnergy: false,
@@ -76,6 +82,7 @@ const OBIS = {
   "1.8.0": {
     // Summe Energie / Zählerstand (Bezug) in kWh
     name: "lblActiveEnergyConsumed",
+    desc: "descActiveEnergyConsumed",
     role: "value.energy.consumed",
     unit: "Wh",
     histEnergy: true,
@@ -84,6 +91,7 @@ const OBIS = {
   "1.8.1": {
     // Zählerstand (Bezug) T1 (NT) in kWh
     name: "lblActiveEnergyT1Consumed",
+    desc: "descActiveEnergyT1Consumed",
     role: "value.energy.consumed",
     unit: "Wh",
     histEnergy: false,
@@ -92,6 +100,7 @@ const OBIS = {
   "1.8.2": {
     // Zählerstand (Bezug) T2 (HT) in kWh
     name: "lblActiveEnergyT2Consumed",
+    desc: "descActiveEnergyT2Consumed",
     role: "value.energy.consumed",
     unit: "Wh",
     histEnergy: false,
@@ -100,6 +109,7 @@ const OBIS = {
   "2.8.0": {
     // Summe Energie Zählerstand (Einspeisung) in kWh
     name: "lblACtiveEnergyProduced",
+    desc: "descACtiveEnergyProduced",
     role: "value.energy.produced",
     unit: "Wh",
     histEnergy: true,
@@ -108,6 +118,7 @@ const OBIS = {
   "2.8.1": {
     // Zählerstand (Einspeisung) T1 (NT) in kWh
     name: "lblActiveEnergyT1Produced",
+    desc: "descActiveEnergyT1Produced",
     role: "value.energy.produced",
     unit: "Wh",
     histEnergy: false,
@@ -116,6 +127,7 @@ const OBIS = {
   "2.8.2": {
     // Zählerstand (Einspeisung) T2 (HT) in kWh
     name: "lblActiveEnergyT2Produced",
+    desc: "descActiveEnergyT2Produced",
     role: "value.energy.produced",
     unit: "Wh",
     histEnergy: false,
@@ -124,6 +136,7 @@ const OBIS = {
   "3.8.0": {
     // Summe Blindenergie (Bezug) in kVarh
     name: "lblReactiveEnergyConsumed",
+    desc: "descReactiveEnergyConsumed",
     role: "value.energy.reactive",
     unit: "Var",
     histEnergy: false,
@@ -132,6 +145,7 @@ const OBIS = {
   "4.8.0": {
     // Summe Blindenergie (Einspeisung) in kVarh
     name: "lblReactiveEnergyProduced",
+    desc: "descReactiveEnergyProduced",
     role: "value.energy.reactive",
     unit: "Var",
     histEnergy: false,
@@ -140,6 +154,7 @@ const OBIS = {
   "16.7.0": {
     // Momentleistung (saldiert) in kW
     name: "lblPower",
+    desc: "lblPower",
     role: "value.power",
     unit: "W",
     histEnergy: false,
@@ -363,7 +378,8 @@ class Shrdzm extends utils.Adapter {
       {
         type: "channel",
         common: {
-          name: utils.I18n.getTranslatedObject(`lblInfo`)
+          name: utils.I18n.getTranslatedObject(`lblInfo`),
+          desc: utils.I18n.getTranslatedObject(`descInfo`)
         },
         native: {}
       },
@@ -375,6 +391,7 @@ class Shrdzm extends utils.Adapter {
         type: "state",
         common: {
           name: utils.I18n.getTranslatedObject(`lblInfoOnline`),
+          desc: utils.I18n.getTranslatedObject(`descInfoOnline`),
           type: "boolean",
           role: "indicator.reachable",
           read: true,
@@ -390,6 +407,7 @@ class Shrdzm extends utils.Adapter {
         type: "state",
         common: {
           name: utils.I18n.getTranslatedObject(`lblInfoTimestamp`),
+          desc: utils.I18n.getTranslatedObject(`descInfoTimestamp`),
           type: "number",
           role: "date",
           read: true,
@@ -405,6 +423,7 @@ class Shrdzm extends utils.Adapter {
         type: "state",
         common: {
           name: utils.I18n.getTranslatedObject(`lblInfoUptime`),
+          desc: utils.I18n.getTranslatedObject(`descInfoUptime`),
           type: "string",
           role: "value",
           read: true,
@@ -420,6 +439,7 @@ class Shrdzm extends utils.Adapter {
         type: "state",
         common: {
           name: utils.I18n.getTranslatedObject(`lblInfoRate`),
+          desc: utils.I18n.getTranslatedObject(`descInfoRate`),
           type: "number",
           role: "value",
           unit: "1/min",
@@ -435,7 +455,8 @@ class Shrdzm extends utils.Adapter {
       {
         type: "channel",
         common: {
-          name: utils.I18n.getTranslatedObject(`lblLive`)
+          name: utils.I18n.getTranslatedObject(`lblLive`),
+          desc: utils.I18n.getTranslatedObject(`descLive`)
         },
         native: {}
       },
@@ -446,7 +467,8 @@ class Shrdzm extends utils.Adapter {
       {
         type: "channel",
         common: {
-          name: utils.I18n.getTranslatedObject(`lblHistory`)
+          name: utils.I18n.getTranslatedObject(`lblHistory`),
+          desc: utils.I18n.getTranslatedObject(`descHistory`)
         },
         native: {}
       },
@@ -472,6 +494,7 @@ class Shrdzm extends utils.Adapter {
           type: "state",
           common: {
             name: utils.I18n.getTranslatedObject(OBIS[obis].name),
+            desc: utils.I18n.getTranslatedObject(OBIS[obis].desc),
             type: "number",
             role: OBIS[obis].role,
             unit: OBIS[obis].unit
@@ -486,7 +509,8 @@ class Shrdzm extends utils.Adapter {
           {
             type: "folder",
             common: {
-              name: utils.I18n.getTranslatedObject(OBIS[obis].name)
+              name: utils.I18n.getTranslatedObject(OBIS[obis].name),
+              desc: utils.I18n.getTranslatedObject(OBIS[obis].desc)
             },
             native: {}
           },
@@ -498,7 +522,8 @@ class Shrdzm extends utils.Adapter {
             {
               type: "folder",
               common: {
-                name: utils.I18n.getTranslatedObject(`lbl${range}`)
+                name: utils.I18n.getTranslatedObject(`lbl${range}`),
+                desc: utils.I18n.getTranslatedObject(`desc${range}`)
               },
               native: {}
             },
@@ -510,6 +535,7 @@ class Shrdzm extends utils.Adapter {
               type: "state",
               common: {
                 name: utils.I18n.getTranslatedObject(`lblCurrId`),
+                desc: utils.I18n.getTranslatedObject(`descCurrId`),
                 type: "number",
                 role: "value"
               },
@@ -523,6 +549,7 @@ class Shrdzm extends utils.Adapter {
               type: "state",
               common: {
                 name: utils.I18n.getTranslatedObject(`lblLastId`),
+                desc: utils.I18n.getTranslatedObject(`descLastId`),
                 type: "number",
                 role: "value"
               },
@@ -536,6 +563,7 @@ class Shrdzm extends utils.Adapter {
               type: "state",
               common: {
                 name: utils.I18n.getTranslatedObject(`lblCurr`),
+                desc: utils.I18n.getTranslatedObject(`descCurr`),
                 type: "number",
                 role: OBIS[obis].role,
                 unit: OBIS[obis].unit
@@ -550,6 +578,7 @@ class Shrdzm extends utils.Adapter {
               type: "state",
               common: {
                 name: utils.I18n.getTranslatedObject(`lblLast`),
+                desc: utils.I18n.getTranslatedObject(`descLast`),
                 type: "number",
                 role: OBIS[obis].role,
                 unit: OBIS[obis].unit
@@ -565,6 +594,7 @@ class Shrdzm extends utils.Adapter {
                 type: "state",
                 common: {
                   name: utils.I18n.getTranslatedObject(`lblCurrStart`),
+                  desc: utils.I18n.getTranslatedObject(`descCurrStart`),
                   type: "number",
                   role: OBIS[obis].role,
                   unit: OBIS[obis].unit
@@ -579,6 +609,7 @@ class Shrdzm extends utils.Adapter {
                 type: "state",
                 common: {
                   name: utils.I18n.getTranslatedObject(`lblLastStart`),
+                  desc: utils.I18n.getTranslatedObject(`descLastStart`),
                   type: "number",
                   role: OBIS[obis].role,
                   unit: OBIS[obis].unit
