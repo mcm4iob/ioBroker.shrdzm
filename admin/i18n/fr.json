@@ -11,5 +11,11 @@
     "lblHdr_2": "Options de traitement",
     "lblEnergyRate": "Taux de mise à jour pour l'énergie",
     "lblPowerRate": "Taux de mise à jour pour PowerInformation",
-    "lblStoreRawData": "Stocker les données brutes reçues de l'appareil"
+    "lblStoreRawData": "Stocker les données brutes reçues de l'appareil",
+    "lblInfoBinding": "Veuillez spécifier à quelle adresse IP / réseau et quel port cet adaptateur doit écouter les messages envoyés par les appareils. Dafault doit écouter tous les réseaux disponibles (0.0.0.0) et le port 9000.",
+    "lblInfoDevices": "Si vous souhaitez écouter une liste dédiée d'appareils, veuillez saisir les ID des appareils. Si vous laissez le champ de saisie vide, l'adaptateur écoute tous les appareils qui envoient des données.",
+    "lblInfoRates": "Normalement, l'appareil transmet des données à haute fréquence. Les données «en direct» sont toujours stockées à l'abri. Pour réduire la charge du système, vous pouvez réduire le nombre d'échantillons utilisés pour les données historiques. Sélection 1:10 Seule chaque 10e valeur sera traitée pour le calcul des données Histiorory",
+    "lblInfoRawData": "La sélection de stockage de données brutes permettra d'analyser les données transmises à partir des appareils, mais ajouter une charge supplémentaire au système en raison de mises à jour fréquentes à l'état.",
+    "lblInfoUdpForwarding": "Cet adaptateur permet de transmettre tous les paquets UDP reçus des appareils vers une autre destination. Veuillez spécifier l'adresse IP et le prot pour transférer les données à.",
+    "lblDonate": "Si vous aimez ce projet et que vous souhaitez soutenir son développement, vous êtes invités à laisser un don."
 }

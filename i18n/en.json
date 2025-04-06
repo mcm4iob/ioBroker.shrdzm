@@ -27,7 +27,7 @@
     "descReactiveEnergyConsumed": "total reactive energy (consumed)",
     "lblReactiveEnergyProduced": "reactive energy (produced)",
     "descReactiveEnergyProduced": "total reactive energy (produced)",
-    "lblPower": "effective power",
+    "lblPower": "power",
     "descPower": "totalized effective power (positive value indicates consumed power)",
     "lblInfo": "information",
     "descInfo": "information",

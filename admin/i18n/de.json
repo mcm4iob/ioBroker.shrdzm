@@ -11,5 +11,11 @@
     "lblHdr_2": "Verarbeitungsoptionen",
     "lblEnergyRate": "Update-Rate für Energie-Information",
     "lblPowerRate": "Update-Rate für Leistungs-Informationen",
-    "lblStoreRawData": "Speichern Sie Rohdaten, die vom Gerät empfangen werden"
+    "lblStoreRawData": "Speichern Sie Rohdaten, die vom Gerät empfangen werden",
+    "lblInfoBinding": "Bitte geben Sie an, in welchem ​​IP -Adresse / dem IP -Netzwerk und welcher Port dieser Adapter auf Nachrichten anhören soll, die von Geräten gesendet werden. Dafault soll alle verfügbaren Netzwerke (0.0.0.0) und Port 9000 anhören.",
+    "lblInfoDevices": "Wenn Sie sich eine dedizierte Liste von Geräten anhören möchten, geben Sie bitte die IDs der Geräte ein. Wenn Sie das Eingangsfeld leer lassen, hört der Adapter auf alle Geräte, die Daten senden.",
+    "lblInfoRates": "Normalerweise überträgt das Gerät Daten bei hoher Frequenz. \"Live\" -Daten werden immer unmidiatkly gespeichert. Um die Systembelastung zu reduzieren, können Sie die Anzahl der für historischen Daten verwendeten Proben reduzieren. Die Auswahl von 1:10 Nur jeder 10. Wert wird für die Berechnung der histiorischen Daten verarbeitet",
+    "lblInfoRawData": "Durch die Auswahl der Rohdaten können Sie Daten analysieren, die von Geräten übertragen werden, jedoch aufgrund häufiger Aktualisierungen des Status zusätzliche Last zum System hinzufügen.",
+    "lblInfoUdpForwarding": "Mit diesem Adapter können jedes UDP -Paket von Geräten an ein anderes Ziel weitergeleitet werden. Bitte geben Sie IP-Addesse und Protokoll an, um Daten weiterzuleiten.",
+    "lblDonate": "Wenn Sie dieses Projekt mögen und seine Entwicklung unterstützen möchten, können Sie gerne eine Spende hinterlassen."
 }

@@ -11,5 +11,11 @@
     "lblHdr_2": "Verwerkingsopties",
     "lblEnergyRate": "UPDATRATE VOOR ENERGY INFORMATIE",
     "lblPowerRate": "UPDATE-rate voor PowerInformation",
-    "lblStoreRawData": "Bewaar onbewerkte gegevens die zijn ontvangen van apparaat"
+    "lblStoreRawData": "Bewaar onbewerkte gegevens die zijn ontvangen van apparaat",
+    "lblInfoBinding": "Geef op welk IP -adres / netwerk en welke poort deze adapter moet luisteren naar berichten die door apparaten zijn verzonden. Dafault moet luisteren op alle beschikbare netwerken (0.0.0.0) en poort 9000.",
+    "lblInfoDevices": "Als u naar een speciale lijst met apparaten wilt luisteren, voer dan de ID's van de apparaten in. Als u het invoerveld leeg laat, luistert de adapter naar alle apparaten die gegevens verzenden.",
+    "lblInfoRates": "Normaal verzendt het apparaat gegevens op hoge frequentie. 'Live' -gegevens worden altijd imidatief opgeslagen. Om de systeembelasting te verminderen, kunt u het aantal monsters dat wordt gebruikt voor historische gegevens verminderen. Het selecteren van 1:10 Alleen elke 10e waarde wordt verwerkt voor de berekening van de hististische gegevens",
+    "lblInfoRawData": "Door selecteren om onbewerkte gegevens op te slaan, kunnen gegevens worden verzonden vanuit apparaten, maar extra belasting toevoegen aan het systeem vanwege frequente updates voor de status.",
+    "lblInfoUdpForwarding": "Met deze adapter kunnen elk UDP -pakket worden ontvangen dat van apparaten is ontvangen naar een andere bestemming. Geef IP-adres op en proteer om gegevens door te sturen.",
+    "lblDonate": "Als u dit project leuk vindt en de ontwikkeling ervan wilt ondersteunen, bent u van harte welkom om een ​​donatie achter te laten."
 }

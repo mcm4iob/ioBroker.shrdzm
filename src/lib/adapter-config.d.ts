@@ -12,6 +12,7 @@ declare global {
             energyRate: number;
             powerRate: number;
             storeRawData: boolean;
+            bindIp: string;
         }
     }
 }

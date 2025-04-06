@@ -11,5 +11,11 @@
     "lblHdr_2": "Opciones de procesamiento",
     "lblEnergyRate": "Tasa de actualización para EnergyInformation",
     "lblPowerRate": "Tasa de actualización para PowerInformation",
-    "lblStoreRawData": "Almacenar datos sin procesar recibidos del dispositivo"
+    "lblStoreRawData": "Almacenar datos sin procesar recibidos del dispositivo",
+    "lblInfoBinding": "Especifique en qué dirección / red IP y qué puerto este adaptador debe escuchar los mensajes enviados por los dispositivos. Dafault escuchará en todas las redes disponibles (0.0.0.0) y el puerto 9000.",
+    "lblInfoDevices": "Si desea escuchar una lista dedicada de dispositivos, ingrese las ID de los dispositivos. Si deja el campo de entrada vacío, el adaptador escucha a todos los dispositivos que envían datos.",
+    "lblInfoRates": "Normalmente, el dispositivo transmite datos a alta frecuencia. Los datos 'en vivo' siempre se almacenan inmidantemente. Para reducir la carga del sistema, puede reducir la cantidad de muestras utilizadas para datos históricos. Seleccionar 1:10 Solo se procesará cada décimo valor para el cálculo de datos histioros",
+    "lblInfoRawData": "La selección para almacenar datos sin procesar permitirá el análisis de datos transmitidos desde dispositivos, pero agregue una carga adicional al sistema debido a las actualizaciones frecuentes al estado.",
+    "lblInfoUdpForwarding": "Este adaptador permite reenviar cada paquete UDP recibido de dispositivos a otro destino. Especifique la dirección IP y protector para reenviar datos.",
+    "lblDonate": "Si le gusta este proyecto y desea apoyar su desarrollo, puede dejar una donación."
 }

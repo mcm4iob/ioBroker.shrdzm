@@ -936,7 +936,7 @@ class Shrdzm extends utils.Adapter {
         }
 
         try {
-            this.udp4Srv && this.udp4Srv.bind(this.config.port);
+            this.udp4Srv && this.udp4Srv.bind(this.config.port, this.config.bindIp);
         } catch (e: any) {
             console.log(`error binding udp4Src to port ${this.config.port} - ${e.message}`);
             return false;
