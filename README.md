@@ -72,6 +72,7 @@ Updates of live data are performed whenever new is recieved from SHRDZM device. 
     ### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* (mcm1957) Online indicator has been added to objectview.
 * (mcm1957) Translations have been updated.
 * (mcm1957) Descriptions have been added to all states and at adminUI.
 * (mcm1957) Raw data received from devices can be stored for analyses now.
