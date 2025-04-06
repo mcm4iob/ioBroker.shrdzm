@@ -1,5 +1,5 @@
 {
-    "shrdzm adapter settings": "Impostazioni dell'adattatore per shrdzm",
+    "shrdzm adapter settings": "Impostazioni dell'adattatore per Shrdzm",
     "lblPort": "Porta",
     "lblDevices": "Dispositivi",
     "lblUdpFwdEnable": "Abilita l'inoltro UDP",
@@ -14,7 +14,7 @@
     "lblStoreRawData": "Memorizzare i dati grezzi ricevuti dal dispositivo",
     "lblInfoBinding": "Si prega di specificare quale indirizzo / rete IP e quale porta questo adattatore dovrebbe ascoltare i messaggi inviati dai dispositivi. Dafault è di ascoltare tutte le reti disponibili (0.0.0.0) e la porta 9000.",
     "lblInfoDevices": "Se si desidera ascoltare un elenco dedicato di dispositivi, inserisci gli ID dei dispositivi. Se si lascia vuoto il campo di input, l'adattatore ascolta tutti i dispositivi che inviano dati.",
-    "lblInfoRates": "Normalmente il dispositivo trasmette i dati ad alta frequenza. I dati \"Live\" sono sempre immidiatamente archiviati. Per ridurre il carico del sistema è possibile ridurre il numero di campioni utilizzati per i dati storici. Selezione 1:10 Verrà elaborato solo ogni 10 ° valore per il calcolo dei dati di storica",
+    "lblInfoRates": "Normalmente il dispositivo trasmette i dati ad alta frequenza. I dati \"live\" vengono sempre archiviati immidiatamente. Per ridurre il carico del sistema è possibile ridurre il numero di campioni utilizzati per i dati storici. Se selezione 1:10 verrà elaborato solo ogni decimo campione per il calcolo dei dati di cronologia.",
     "lblInfoRawData": "La selezione di dati grezzi consentirà l'analisi dei dati trasmessi dai dispositivi ma aggiungere un carico aggiuntivo al sistema a causa di frequenti aggiornamenti allo stato.",
     "lblInfoUdpForwarding": "Questo adattatore consente di inoltrare ogni pacchetto UDP ricevuto dai dispositivi a un'altra destinazione. Si prega di specificare l'indirizzo IP e prot per inoltrare i dati a.",
     "lblDonate": "Se ti piace questo progetto e desideri supportare il suo sviluppo, sei invitato a lasciare una donazione."

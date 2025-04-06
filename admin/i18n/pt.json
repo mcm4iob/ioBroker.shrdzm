@@ -14,7 +14,7 @@
     "lblStoreRawData": "Armazenar dados brutos recebidos do dispositivo",
     "lblInfoBinding": "Especifique em qual endereço / rede IP e qual porta este adaptador deve ouvir as mensagens enviadas por dispositivos. Dafault deve ouvir todas as redes disponíveis (0.0.0.0) e a porta 9000.",
     "lblInfoDevices": "Se você deseja ouvir uma lista dedicada de dispositivos, insira os IDs dos dispositivos. Se você deixar o campo de entrada vazio, o adaptador ouve todos os dispositivos enviando dados.",
-    "lblInfoRates": "Normalmente, o dispositivo transmite dados em alta frequência. Os dados 'ao vivo' são sempre imidiamente armazenados. Para reduzir a carga do sistema, você pode reduzir o número de amostras usadas para dados históricos. Selecionando 1:10 Somente cada 10º valor será processado para cálculo de dados históricos",
+    "lblInfoRates": "Normalmente, o dispositivo transmite dados em alta frequência. Os dados 'ao vivo' são sempre armazenados imidiá -lo. Para reduzir a carga do sistema, você pode reduzir o número de amostras usadas para dados históricos. Se selecionar 1:10 Somente cada 10ª amostra será processada para o cálculo dos dados do histórico.",
     "lblInfoRawData": "A seleção para armazenar dados brutos permitirá a análise de dados transmitidos a partir de dispositivos, mas adicione carga adicional ao sistema devido a atualizações frequentes ao estado.",
     "lblInfoUdpForwarding": "Este adaptador permite encaminhar todos os pacotes UDP recebidos de dispositivos para outro destino. Especifique o endereço IP e o prot para encaminhar dados para.",
     "lblDonate": "Se você gosta deste projeto e gostaria de apoiar seu desenvolvimento, pode deixar uma doação."

@@ -1,5 +1,5 @@
 {
-    "shrdzm adapter settings": "Ustawienia adaptera dla shrdzm",
+    "shrdzm adapter settings": "Ustawienia adaptera dla shdzmm",
     "lblPort": "Port",
     "lblDevices": "Urządzenia",
     "lblUdpFwdEnable": "Włącz przekazywanie UDP",
@@ -14,7 +14,7 @@
     "lblStoreRawData": "Przechowuj surowe dane otrzymane z urządzenia",
     "lblInfoBinding": "Podaj adres IP / sieć i który port ten adapter powinien słuchać wiadomości wysyłanych przez urządzenia. Dafault ma słuchać wszystkich dostępnych sieci (0.0.0.0) i Port 9000.",
     "lblInfoDevices": "Jeśli chcesz wysłuchać dedykowanej listy urządzeń, wprowadź identyfikatory urządzeń. Jeśli pozostawisz puste pole wejściowe, adapter słucha wszystkich urządzeń wysyłających dane.",
-    "lblInfoRates": "Zwykle urządzenie przesyła dane o wysokiej częstotliwości. Dane „na żywo” są zawsze przechowywane. Aby zmniejszyć obciążenie systemu, możesz zmniejszyć liczbę próbek używanych do danych historycznych. Wybór 1:10 tylko co 10. wartość będzie przetwarzana do obliczania danych histiorycznych",
+    "lblInfoRates": "Zwykle urządzenie przesyła dane o wysokiej częstotliwości. Dane „na żywo” są zawsze przechowywane immidalnie. Aby zmniejszyć obciążenie systemu, możesz zmniejszyć liczbę próbek używanych do danych historycznych. Jeśli wybór 1:10 tylko co 10 próbka zostanie przetworzona do obliczania danych historii.",
     "lblInfoRawData": "Wybór przechowywania surowych danych pozwoli na analizę danych przesyłanych z urządzeń, ale dodaj dodatkowe obciążenie do systemu ze względu na częste aktualizacje stanu.",
     "lblInfoUdpForwarding": "Ten adapter pozwala przekazać każdy pakiet UDP otrzymany z urządzeń do innego miejsca docelowego. Podaj adres IP i PROT, aby przekazać dane do.",
     "lblDonate": "Jeśli podoba ci się ten projekt i chcesz wesprzeć jego rozwój, możesz opuścić darowiznę."

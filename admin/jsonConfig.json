@@ -34,10 +34,10 @@
                     "onlyIp4": true,
                     "listenOnAllPorts": true,
                     "xs": 12,
-                    "sm": 8,
-                    "md": 4,
-                    "lg": 2,
-                    "xl": 2
+                    "sm": 12,
+                    "md": 8,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "port": {
                     "type": "port",
