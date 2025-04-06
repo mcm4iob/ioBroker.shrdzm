@@ -254,6 +254,9 @@ class Shrdzm extends utils.Adapter {
     }
     const deviceId = msgJson.id;
     const ts = Date.parse(data.timestamp);
+    if (this.config.storeRawData) {
+      await this.setState(`${deviceId}.live.raw`, msg.toString(), true);
+    }
     await this.setState(`${deviceId}.info.timestamp`, ts, true);
     await this.setState(`${deviceId}.info.uptime`, data.uptime, true);
     await this.updateRegister(deviceId);
@@ -367,7 +370,11 @@ class Shrdzm extends utils.Adapter {
       {
         type: "device",
         common: {
-          name: deviceId
+          name: deviceId,
+          desc: utils.I18n.getTranslatedObject(`descDevice`),
+          statusStates: {
+            onlineId: `${deviceId}.info.online`
+          }
         },
         native: {}
       },
@@ -457,6 +464,22 @@ class Shrdzm extends utils.Adapter {
         common: {
           name: utils.I18n.getTranslatedObject(`lblLive`),
           desc: utils.I18n.getTranslatedObject(`descLive`)
+        },
+        native: {}
+      },
+      { preserve: { common: ["name"] } }
+    );
+    await this.extendObject(
+      `${deviceId}.live.raw`,
+      {
+        type: "state",
+        common: {
+          name: utils.I18n.getTranslatedObject(`lblRaw`),
+          desc: utils.I18n.getTranslatedObject(`descRaw`),
+          type: "string",
+          role: "json",
+          read: true,
+          write: false
         },
         native: {}
       },
@@ -732,6 +755,12 @@ class Shrdzm extends utils.Adapter {
       if (id.includes(".info.uptime")) {
         await this.setState(id, null, true);
       }
+      if (id.includes(".info.timestamp")) {
+        await this.setState(id, null, true);
+      }
+      if (id.includes(".live.raw")) {
+        await this.setState(id, null, true);
+      }
       if (id.includes(".history.")) {
         this.log.debug(`"${id}" = "${states[id].val}`);
         const deviceId = id.split(".")[2];
@@ -807,7 +836,7 @@ ${err.stack}`);
       try {
         (_a = this.udp4Srv) == null ? void 0 : _a.send(msg, port, address);
       } catch (e) {
-        this.log.error(`erroro forwarding message to ${address}:${port} - ${e.message}`);
+        this.log.error(`error forwarding message to ${address}:${port} - ${e.message}`);
       }
     }
     await this.processUdp4Message(msg, rinfo);

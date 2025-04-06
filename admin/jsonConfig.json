@@ -95,6 +95,18 @@
             "label": "lblExpertConfig",
             "expertMode": true,
             "items": {
+                "storeRawData": {
+                    "type": "checkbox",
+                    "label": "lblStoreRawData",
+                    "newLine": true,
+                    "expertMode": true,
+                    "default": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 10,
+                    "lg": 8,
+                    "xl": 4
+                },
                 "udpFwdEnable": {
                     "type": "checkbox",
                     "label": "lblUdpFwdEnable",

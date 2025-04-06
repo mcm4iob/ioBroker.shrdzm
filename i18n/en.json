@@ -58,6 +58,11 @@
     "lblHour": "1 hour",
     "descHour": "data summarized over an interval of 1 hour",
     "lblDay": "1 day",
-    "descDay": "data summarized over an interval of 1 day"
+    "descDay": "data summarized over an interval of 1 day",
+    "lblInfoRate":"update rate",
+    "descInfoRate":"number of updates received from device per minute",
+    "descDevice": "device transmitting data",
+    "lblRaw":"raw data",
+    "descRaw": "raw data received from device"
 }
 

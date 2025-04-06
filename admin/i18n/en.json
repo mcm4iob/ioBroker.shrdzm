@@ -10,5 +10,6 @@
     "lblHdr_1": "General Setup",
     "lblHdr_2": "Processing Options",
     "lblEnergyRate": "Update-Rate for Energyinformation",
-    "lblPowerRate": "Update-Rate for Powerinformation"
+    "lblPowerRate": "Update-Rate for Powerinformation",
+    "lblStoreRawData": "Store raw data received from device"
 }

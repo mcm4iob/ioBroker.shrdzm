@@ -11,6 +11,7 @@ declare global {
             udpFwdPort: number;
             energyRate: number;
             powerRate: number;
+            storeRawData: boolean;
         }
     }
 }
