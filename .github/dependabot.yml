@@ -7,8 +7,6 @@ updates:
       time: "04:00"
       timezone: Europe/Berlin
     open-pull-requests-limit: 15
-    assignees:
-      - mcm1957
     versioning-strategy: increase
 
   - package-ecosystem: github-actions
@@ -19,4 +17,3 @@ updates:
       timezone: Europe/Berlin
     open-pull-requests-limit: 15
     assignees:
-      - mcm1957
