@@ -71,6 +71,10 @@ Updates of live data are performed whenever new is recieved from SHRDZM device. 
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* (mcm1957) Adapter requires node.js 20.x, js-controller 7.0.7 and admin 7.6.17 now.
+* (mcm1957) Dependencies have been updated.
+
 ### 0.2.0 (2025-04-06)
 * (mcm1957) Online indicator has been added to objectview.
 * (mcm1957) Translations have been updated.
