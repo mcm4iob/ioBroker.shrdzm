@@ -1,13 +1,26 @@
 ![Logo](admin/shrdzm.png)
 # ioBroker.shrdzm
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.shrdzm.svg)](https://www.npmjs.com/package/iobroker.shrdzm)
+**General Info:**<br>
+[![GitHub license](https://img.shields.io/github/license/mcm4iob/ioBroker.shrdzm)](https://github.com/mcm4iob/ioBroker.shrdzm/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.shrdzm.svg)](https://www.npmjs.com/package/iobroker.shrdzm)
-![Number of Installations (latest)](http://iobroker.live/badges/shrdzm-installed.svg)
-![Number of Installations (stable)](http://iobroker.live/badges/shrdzm-stable.svg)
-![Test and Release](https://github.com/mcm4iob/ioBroker.shrdzm/workflows/Test%20and%20Release/badge.svg)
-
-[![License](https://img.shields.io/github/license/mcm4iob/ioBroker.shrdzm?style=flat)](https://github.com/mcm4iob/ioBroker.shrdzm/blob/main/LICENSE)
+![GitHub repo size](https://img.shields.io/github/repo-size/mcm4iob/ioBroker.shrdzm)
+[![Translation status](https://weblate.iobroker.net/widgets/adapters/-/shrdzm/svg-badge.svg)](https://weblate.iobroker.net/engage/adapters/?utm_source=widget)</br>
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mcm4iob/ioBroker.shrdzm)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/mcm4iob/ioBroker.shrdzm/latest)
+![GitHub last commit](https://img.shields.io/github/last-commit/mcm4iob/ioBroker.shrdzm)
+![GitHub issues](https://img.shields.io/github/issues/mcm4iob/ioBroker.shrdzm)
+</br>
+**Version:** </br>
+[![NPM version](http://img.shields.io/npm/v/iobroker.shrdzm.svg)](https://www.npmjs.com/package/iobroker.shrdzm)
+![Current version in stable repository](https://iobroker.live/badges/shrdzm-stable.svg)
+![Number of Installations](https://iobroker.live/badges/shrdzm-installed.svg)
+</br>
+**Tests:** </br>
+[![Test and Release](https://github.com/mcm4iob/ioBroker.shrdzm/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/mcm4iob/ioBroker.shrdzm/actions/workflows/test-and-release.yml)
+[![CodeQL](https://github.com/mcm4iob/ioBroker.shrdzm/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/mcm4iob/ioBroker.shrdzm/actions/workflows/github-code-scanning/codeql)
+<br>
+**Donation:** </br>
 [![Donate](https://img.shields.io/badge/paypal-donate%20|%20spenden-blue.svg)](https://paypal.me/mcm1957atIoBroker)
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/mcm1957)
 
