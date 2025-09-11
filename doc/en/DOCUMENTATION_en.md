@@ -117,38 +117,59 @@ The SHRDZM device will immediately start sending data to your ioBroker adapter a
 
 The adapter creates states for all received OBIS codes. Below is a complete list of supported states:
 
-### Device Information
-- `<deviceId>.info.connection` - Connection status of the device
-- `<deviceId>.info.lastSeen` - Timestamp of last received data
-- `<deviceId>.uptime` - Device uptime information
+### Device Information States
 
-### Energy Consumption (Import)
-- `<deviceId>.1.8.0` - Total active energy consumed (Wh)
-- `<deviceId>.1.8.1` - Active energy consumed tariff 1 (NT - night tariff) (Wh)
-- `<deviceId>.1.8.2` - Active energy consumed tariff 2 (HT - high tariff) (Wh)
+| State | Type | Unit | Role | Description |
+|-------|------|------|------|-------------|
+| `<deviceId>.info.connection` | boolean | - | indicator.reachable | Connection status of the device |
+| `<deviceId>.info.lastSeen` | number | - | date | Timestamp of last received data |
+| `<deviceId>.uptime` | number | s | value | Device uptime information |
 
-### Energy Production (Export)  
-- `<deviceId>.2.8.0` - Total active energy produced (Wh)
-- `<deviceId>.2.8.1` - Active energy produced tariff 1 (NT) (Wh)
-- `<deviceId>.2.8.2` - Active energy produced tariff 2 (HT) (Wh)
+### Energy Consumption States (Import)
 
-### Reactive Energy
-- `<deviceId>.3.8.0` - Total reactive energy consumed (Var)
-- `<deviceId>.4.8.0` - Total reactive energy produced (Var)
+| State | Type | Unit | Role | Description |
+|-------|------|------|------|-------------|
+| `<deviceId>.1.8.0` | number | Wh | value.energy.consumed | Total active energy consumed |
+| `<deviceId>.1.8.1` | number | Wh | value.energy.consumed | Active energy consumed tariff 1 (NT - night tariff) |
+| `<deviceId>.1.8.2` | number | Wh | value.energy.consumed | Active energy consumed tariff 2 (HT - high tariff) |
 
-### Instantaneous Power
-- `<deviceId>.1.7.0` - Current active power consumed (W)
-- `<deviceId>.2.7.0` - Current active power produced (W)
-- `<deviceId>.3.7.0` - Current reactive power consumed (Var)
-- `<deviceId>.4.7.0` - Current reactive power produced (Var)
-- `<deviceId>.16.7.0` - Current total power (net balance) (W)
+### Energy Production States (Export)
 
-### Peak Power Values
-- `<deviceId>.1.6.0` - Peak active power consumed (15-minute maximum) (W)
-- `<deviceId>.2.6.0` - Peak active power produced (15-minute maximum) (W)
+| State | Type | Unit | Role | Description |
+|-------|------|------|------|-------------|
+| `<deviceId>.2.8.0` | number | Wh | value.energy.produced | Total active energy produced |
+| `<deviceId>.2.8.1` | number | Wh | value.energy.produced | Active energy produced tariff 1 (NT) |
+| `<deviceId>.2.8.2` | number | Wh | value.energy.produced | Active energy produced tariff 2 (HT) |
 
-### Raw Data (if enabled)
-- `<deviceId>.rawData` - Raw UDP packet data as received from device
+### Reactive Energy States
+
+| State | Type | Unit | Role | Description |
+|-------|------|------|------|-------------|
+| `<deviceId>.3.8.0` | number | Var | value.energy.consumed | Total reactive energy consumed |
+| `<deviceId>.4.8.0` | number | Var | value.energy.produced | Total reactive energy produced |
+
+### Instantaneous Power States
+
+| State | Type | Unit | Role | Description |
+|-------|------|------|------|-------------|
+| `<deviceId>.1.7.0` | number | W | value.power.active | Current active power consumed |
+| `<deviceId>.2.7.0` | number | W | value.power.active | Current active power produced |
+| `<deviceId>.3.7.0` | number | Var | value.power.reactive | Current reactive power consumed |
+| `<deviceId>.4.7.0` | number | Var | value.power.reactive | Current reactive power produced |
+| `<deviceId>.16.7.0` | number | W | value.power.active | Current total power (net balance) |
+
+### Peak Power States
+
+| State | Type | Unit | Role | Description |
+|-------|------|------|------|-------------|
+| `<deviceId>.1.6.0` | number | W | value.power.active | Peak active power consumed (15-minute maximum) |
+| `<deviceId>.2.6.0` | number | W | value.power.active | Peak active power produced (15-minute maximum) |
+
+### Raw Data States (if enabled)
+
+| State | Type | Unit | Role | Description |
+|-------|------|------|------|-------------|
+| `<deviceId>.rawData` | string | - | text | Raw UDP packet data as received from device |
 
 **Note**: `<deviceId>` is replaced with the actual device ID (e.g., `84CCA8A411EB`)
 

@@ -113,42 +113,63 @@ Das SHRDZM-Gerät beginnt sofort, Daten an Ihren ioBroker-Adapter im konfigurier
 - **UDP-Weiterleitungsadresse**: Ziel-IP-Adresse für die Weiterleitung
 - **UDP-Weiterleitungsport**: Zielport für die Weiterleitung
 
-## Vom Adapter erstellte Datenpunkte
+## Vom Adapter erstellte Zustände
 
-Der Adapter erstellt Datenpunkte für alle empfangenen OBIS-Codes. Nachfolgend eine vollständige Liste der unterstützten Datenpunkte:
+Der Adapter erstellt Zustände für alle empfangenen OBIS-Codes. Nachfolgend eine vollständige Liste der unterstützten Zustände:
 
-### Geräteinformationen
-- `<geräteId>.info.connection` - Verbindungsstatus des Geräts
-- `<geräteId>.info.lastSeen` - Zeitstempel der letzten empfangenen Daten
-- `<geräteId>.uptime` - Geräte-Laufzeitinformationen
+### Geräteinformations-Zustände
 
-### Energieverbrauch (Bezug)
-- `<geräteId>.1.8.0` - Gesamte verbrauchte Wirkenergie (Wh)
-- `<geräteId>.1.8.1` - Verbrauchte Wirkenergie Tarif 1 (NT - Niedertarif) (Wh)
-- `<geräteId>.1.8.2` - Verbrauchte Wirkenergie Tarif 2 (HT - Hochtarif) (Wh)
+| Zustand | Typ | Einheit | Rolle | Beschreibung |
+|---------|-----|---------|-------|--------------|
+| `<geräteId>.info.connection` | boolean | - | indicator.reachable | Verbindungsstatus des Geräts |
+| `<geräteId>.info.lastSeen` | number | - | date | Zeitstempel der letzten empfangenen Daten |
+| `<geräteId>.uptime` | number | s | value | Geräte-Laufzeitinformationen |
 
-### Energieerzeugung (Einspeisung)
-- `<geräteId>.2.8.0` - Gesamte erzeugte Wirkenergie (Wh)
-- `<geräteId>.2.8.1` - Erzeugte Wirkenergie Tarif 1 (NT) (Wh)
-- `<geräteId>.2.8.2` - Erzeugte Wirkenergie Tarif 2 (HT) (Wh)
+### Energieverbrauchs-Zustände (Bezug)
 
-### Blindenergie
-- `<geräteId>.3.8.0` - Gesamte verbrauchte Blindenergie (Var)
-- `<geräteId>.4.8.0` - Gesamte erzeugte Blindenergie (Var)
+| Zustand | Typ | Einheit | Rolle | Beschreibung |
+|---------|-----|---------|-------|--------------|
+| `<geräteId>.1.8.0` | number | Wh | value.energy.consumed | Gesamte verbrauchte Wirkenergie |
+| `<geräteId>.1.8.1` | number | Wh | value.energy.consumed | Verbrauchte Wirkenergie Tarif 1 (NT - Niedertarif) |
+| `<geräteId>.1.8.2` | number | Wh | value.energy.consumed | Verbrauchte Wirkenergie Tarif 2 (HT - Hochtarif) |
 
-### Momentanleistung
-- `<geräteId>.1.7.0` - Aktuelle verbrauchte Wirkleistung (W)
-- `<geräteId>.2.7.0` - Aktuelle erzeugte Wirkleistung (W)
-- `<geräteId>.3.7.0` - Aktuelle verbrauchte Blindleistung (Var)
-- `<geräteId>.4.7.0` - Aktuelle erzeugte Blindleistung (Var)
-- `<geräteId>.16.7.0` - Aktuelle Gesamtleistung (Netzsaldo) (W)
+### Energieerzeugung-Zustände (Einspeisung)
 
-### Spitzenleistungswerte
-- `<geräteId>.1.6.0` - Spitzenleistung verbraucht (15-Minuten-Maximum) (W)
-- `<geräteId>.2.6.0` - Spitzenleistung erzeugt (15-Minuten-Maximum) (W)
+| Zustand | Typ | Einheit | Rolle | Beschreibung |
+|---------|-----|---------|-------|--------------|
+| `<geräteId>.2.8.0` | number | Wh | value.energy.produced | Gesamte erzeugte Wirkenergie |
+| `<geräteId>.2.8.1` | number | Wh | value.energy.produced | Erzeugte Wirkenergie Tarif 1 (NT) |
+| `<geräteId>.2.8.2` | number | Wh | value.energy.produced | Erzeugte Wirkenergie Tarif 2 (HT) |
 
-### Rohdaten (falls aktiviert)
-- `<geräteId>.rawData` - Rohe UDP-Paketdaten wie vom Gerät empfangen
+### Blindenergie-Zustände
+
+| Zustand | Typ | Einheit | Rolle | Beschreibung |
+|---------|-----|---------|-------|--------------|
+| `<geräteId>.3.8.0` | number | Var | value.energy.consumed | Gesamte verbrauchte Blindenergie |
+| `<geräteId>.4.8.0` | number | Var | value.energy.produced | Gesamte erzeugte Blindenergie |
+
+### Momentanleistungs-Zustände
+
+| Zustand | Typ | Einheit | Rolle | Beschreibung |
+|---------|-----|---------|-------|--------------|
+| `<geräteId>.1.7.0` | number | W | value.power.active | Aktuelle verbrauchte Wirkleistung |
+| `<geräteId>.2.7.0` | number | W | value.power.active | Aktuelle erzeugte Wirkleistung |
+| `<geräteId>.3.7.0` | number | Var | value.power.reactive | Aktuelle verbrauchte Blindleistung |
+| `<geräteId>.4.7.0` | number | Var | value.power.reactive | Aktuelle erzeugte Blindleistung |
+| `<geräteId>.16.7.0` | number | W | value.power.active | Aktuelle Gesamtleistung (Netzsaldo) |
+
+### Spitzenleistungs-Zustände
+
+| Zustand | Typ | Einheit | Rolle | Beschreibung |
+|---------|-----|---------|-------|--------------|
+| `<geräteId>.1.6.0` | number | W | value.power.active | Spitzenleistung verbraucht (15-Minuten-Maximum) |
+| `<geräteId>.2.6.0` | number | W | value.power.active | Spitzenleistung erzeugt (15-Minuten-Maximum) |
+
+### Rohdaten-Zustände (falls aktiviert)
+
+| Zustand | Typ | Einheit | Rolle | Beschreibung |
+|---------|-----|---------|-------|--------------|
+| `<geräteId>.rawData` | string | - | text | Rohe UDP-Paketdaten wie vom Gerät empfangen |
 
 **Hinweis**: `<geräteId>` wird durch die tatsächliche Geräte-ID ersetzt (z.B. `84CCA8A411EB`)
 
