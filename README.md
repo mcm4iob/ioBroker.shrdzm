@@ -37,6 +37,13 @@ This adapter integrates the SHRDZM smartmeter interface available from *SHRDZM I
 
 Note that this adapter is not related to the company mentioned above in any way and that no commercial relationship exists at all.
 
+## Documentation
+
+Detailed documentation is available in multiple languages:
+
+- **English**: [doc/en/DOCUMENTATION_en.md](doc/en/DOCUMENTATION_en.md)
+- **Deutsch**: [doc/de/DOCUMENTATION_de.md](doc/de/DOCUMENTATION_de.md)
+
 **************************************************************************************************************
 
 ## Disclaimer

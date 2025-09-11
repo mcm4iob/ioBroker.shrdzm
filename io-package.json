@@ -117,7 +117,11 @@
       {
         "admin": ">=7.6.17"
       }
-    ]
+    ],
+    "docs": {
+      "en": "doc/en/DOCUMENTATION_en.md",
+      "de": "doc/de/DOCUMENTATION_de.md"
+    }
   },
   "native": {
     "port": 0,
