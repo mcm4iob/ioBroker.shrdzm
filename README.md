@@ -86,7 +86,6 @@ Updates of live data are performed whenever new is recieved from SHRDZM device. 
 -->
 
 ### **WORK_IN_PROGRESS**
-<!-- ### **WORK_IN_PROGRESS** -->
 
 ### 1.0.0 (2025-08-14)
 * (mcm1957) Adapter requires node.js 20.x, js-controller 7.0.7 and admin 7.6.17 now.
