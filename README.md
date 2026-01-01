@@ -115,7 +115,7 @@ Updates of live data are performed whenever new is recieved from SHRDZM device. 
 ## License
 MIT License
 
-Copyright (c) 2025 mcm1957 <mcm57@gmx.at>
+Copyright (c) 2025-2026 mcm1957 <mcm57@gmx.at>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
