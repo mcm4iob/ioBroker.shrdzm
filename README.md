@@ -92,6 +92,9 @@ Updates of live data are performed whenever new is recieved from SHRDZM device. 
     ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### **WORK_IN_PROGRESS**
 
 ### 1.0.0 (2025-08-14)
