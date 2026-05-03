@@ -112,6 +112,8 @@ Updates of live data are performed whenever new is recieved from SHRDZM device. 
 ### 0.1.0 (2025-03-15)
 * (mcm1957) initial release
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
